@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32AB333519FD866000441D7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB333419FD866000441D7A /* main.m */; };
+		32AB333819FD866000441D7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB333719FD866000441D7A /* AppDelegate.m */; };
+		32AB333A19FD866000441D7A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32AB333919FD866000441D7A /* Images.xcassets */; };
+		32AB333D19FD866000441D7A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB333B19FD866000441D7A /* LaunchScreen.xib */; };
+		32AB334919FD866000441D7A /* IRGDibujarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB334819FD866000441D7A /* IRGDibujarTests.m */; };
+		32AB335719FD872400441D7A /* IRGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB335619FD872400441D7A /* IRGTabBarController.m */; };
+		32AB336019FD87A400441D7A /* IRGCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */; };
+		32AB336119FD87A400441D7A /* IRGCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */; };
+		32AB336519FD883600441D7A /* IRGElegirColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB336319FD883600441D7A /* IRGElegirColorViewController.m */; };
+		32AB336619FD883600441D7A /* IRGElegirColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */; };
+		32AB337119FD8BD400441D7A /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */; };
+		32AB337419FD933300441D7A /* IRGCelda.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB337319FD933300441D7A /* IRGCelda.m */; };
+		E129745B19FE4D0F00E7EA99 /* IRGPincelNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = E129745A19FE4D0F00E7EA99 /* IRGPincelNormal.m */; };
+		E129745E19FE4EBD00E7EA99 /* IRGPincelRelleno.m in Sources */ = {isa = PBXBuildFile; fileRef = E129745D19FE4EBD00E7EA99 /* IRGPincelRelleno.m */; };
+		E129746119FE551F00E7EA99 /* IRGAlmacenDeCeldas.m in Sources */ = {isa = PBXBuildFile; fileRef = E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32AB334319FD866000441D7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32AB332719FD866000441D7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32AB332E19FD866000441D7A;
+			remoteInfo = IRGDibujar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		32AB332F19FD866000441D7A /* IRGDibujar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IRGDibujar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32AB333319FD866000441D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32AB333419FD866000441D7A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32AB333619FD866000441D7A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		32AB333719FD866000441D7A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		32AB333919FD866000441D7A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32AB333C19FD866000441D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		32AB334219FD866000441D7A /* IRGDibujarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IRGDibujarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		32AB334719FD866000441D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32AB334819FD866000441D7A /* IRGDibujarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGDibujarTests.m; sourceTree = "<group>"; };
+		32AB335519FD872400441D7A /* IRGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRGTabBarController.h; path = ../IRGTabBarController.h; sourceTree = "<group>"; };
+		32AB335619FD872400441D7A /* IRGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRGTabBarController.m; path = ../IRGTabBarController.m; sourceTree = "<group>"; };
+		32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRGCanvasViewController.h; path = ../IRGCanvasViewController.h; sourceTree = "<group>"; };
+		32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRGCanvasViewController.m; path = ../IRGCanvasViewController.m; sourceTree = "<group>"; };
+		32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IRGCanvasViewController.xib; path = ../IRGCanvasViewController.xib; sourceTree = "<group>"; };
+		32AB336219FD883600441D7A /* IRGElegirColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGElegirColorViewController.h; sourceTree = "<group>"; };
+		32AB336319FD883600441D7A /* IRGElegirColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGElegirColorViewController.m; sourceTree = "<group>"; };
+		32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGElegirColorViewController.xib; sourceTree = "<group>"; };
+		32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCeldaViewController.h; sourceTree = "<group>"; };
+		32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCeldaViewController.m; sourceTree = "<group>"; };
+		32AB337219FD933300441D7A /* IRGCelda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCelda.h; sourceTree = "<group>"; };
+		32AB337319FD933300441D7A /* IRGCelda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCelda.m; sourceTree = "<group>"; };
+		32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCeldaProtocol.h; sourceTree = "<group>"; };
+		E129745919FE4D0F00E7EA99 /* IRGPincelNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincelNormal.h; sourceTree = "<group>"; };
+		E129745A19FE4D0F00E7EA99 /* IRGPincelNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincelNormal.m; sourceTree = "<group>"; };
+		E129745C19FE4EBD00E7EA99 /* IRGPincelRelleno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincelRelleno.h; sourceTree = "<group>"; };
+		E129745D19FE4EBD00E7EA99 /* IRGPincelRelleno.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincelRelleno.m; sourceTree = "<group>"; };
+		E129745F19FE551F00E7EA99 /* IRGAlmacenDeCeldas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGAlmacenDeCeldas.h; sourceTree = "<group>"; };
+		E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGAlmacenDeCeldas.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32AB332C19FD866000441D7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32AB333F19FD866000441D7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32AB332619FD866000441D7A = {
+			isa = PBXGroup;
+			children = (
+				32AB333119FD866000441D7A /* IRGDibujar */,
+				32AB334519FD866000441D7A /* IRGDibujarTests */,
+				32AB333019FD866000441D7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32AB333019FD866000441D7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32AB332F19FD866000441D7A /* IRGDibujar.app */,
+				32AB334219FD866000441D7A /* IRGDibujarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32AB333119FD866000441D7A /* IRGDibujar */ = {
+			isa = PBXGroup;
+			children = (
+				32AB336919FD8A3900441D7A /* Controlador */,
+				32AB336819FD8A3100441D7A /* Vista */,
+				32AB336719FD8A2500441D7A /* Modelo */,
+				32AB333919FD866000441D7A /* Images.xcassets */,
+				32AB333B19FD866000441D7A /* LaunchScreen.xib */,
+				32AB333219FD866000441D7A /* Supporting Files */,
+			);
+			path = IRGDibujar;
+			sourceTree = "<group>";
+		};
+		32AB333219FD866000441D7A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32AB333319FD866000441D7A /* Info.plist */,
+				32AB333419FD866000441D7A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32AB334519FD866000441D7A /* IRGDibujarTests */ = {
+			isa = PBXGroup;
+			children = (
+				32AB334819FD866000441D7A /* IRGDibujarTests.m */,
+				32AB334619FD866000441D7A /* Supporting Files */,
+			);
+			path = IRGDibujarTests;
+			sourceTree = "<group>";
+		};
+		32AB334619FD866000441D7A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32AB334719FD866000441D7A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32AB336719FD8A2500441D7A /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				E129745F19FE551F00E7EA99 /* IRGAlmacenDeCeldas.h */,
+				E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */,
+				E129745C19FE4EBD00E7EA99 /* IRGPincelRelleno.h */,
+				E129745D19FE4EBD00E7EA99 /* IRGPincelRelleno.m */,
+				E129745919FE4D0F00E7EA99 /* IRGPincelNormal.h */,
+				E129745A19FE4D0F00E7EA99 /* IRGPincelNormal.m */,
+			);
+			name = Modelo;
+			sourceTree = "<group>";
+		};
+		32AB336819FD8A3100441D7A /* Vista */ = {
+			isa = PBXGroup;
+			children = (
+				32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */,
+				32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */,
+			);
+			name = Vista;
+			sourceTree = "<group>";
+		};
+		32AB336919FD8A3900441D7A /* Controlador */ = {
+			isa = PBXGroup;
+			children = (
+				32AB333619FD866000441D7A /* AppDelegate.h */,
+				32AB333719FD866000441D7A /* AppDelegate.m */,
+				32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */,
+				32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */,
+				32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */,
+				32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */,
+				32AB337219FD933300441D7A /* IRGCelda.h */,
+				32AB337319FD933300441D7A /* IRGCelda.m */,
+				32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */,
+				32AB336219FD883600441D7A /* IRGElegirColorViewController.h */,
+				32AB336319FD883600441D7A /* IRGElegirColorViewController.m */,
+				32AB335519FD872400441D7A /* IRGTabBarController.h */,
+				32AB335619FD872400441D7A /* IRGTabBarController.m */,
+			);
+			name = Controlador;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32AB332E19FD866000441D7A /* IRGDibujar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32AB334C19FD866000441D7A /* Build configuration list for PBXNativeTarget "IRGDibujar" */;
+			buildPhases = (
+				32AB332B19FD866000441D7A /* Sources */,
+				32AB332C19FD866000441D7A /* Frameworks */,
+				32AB332D19FD866000441D7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IRGDibujar;
+			productName = IRGDibujar;
+			productReference = 32AB332F19FD866000441D7A /* IRGDibujar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		32AB334119FD866000441D7A /* IRGDibujarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32AB334F19FD866000441D7A /* Build configuration list for PBXNativeTarget "IRGDibujarTests" */;
+			buildPhases = (
+				32AB333E19FD866000441D7A /* Sources */,
+				32AB333F19FD866000441D7A /* Frameworks */,
+				32AB334019FD866000441D7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32AB334419FD866000441D7A /* PBXTargetDependency */,
+			);
+			name = IRGDibujarTests;
+			productName = IRGDibujarTests;
+			productReference = 32AB334219FD866000441D7A /* IRGDibujarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32AB332719FD866000441D7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = IvanRodriguez;
+				TargetAttributes = {
+					32AB332E19FD866000441D7A = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					32AB334119FD866000441D7A = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 32AB332E19FD866000441D7A;
+					};
+				};
+			};
+			buildConfigurationList = 32AB332A19FD866000441D7A /* Build configuration list for PBXProject "IRGDibujar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32AB332619FD866000441D7A;
+			productRefGroup = 32AB333019FD866000441D7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32AB332E19FD866000441D7A /* IRGDibujar */,
+				32AB334119FD866000441D7A /* IRGDibujarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32AB332D19FD866000441D7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32AB336619FD883600441D7A /* IRGElegirColorViewController.xib in Resources */,
+				32AB336119FD87A400441D7A /* IRGCanvasViewController.xib in Resources */,
+				32AB333D19FD866000441D7A /* LaunchScreen.xib in Resources */,
+				32AB333A19FD866000441D7A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32AB334019FD866000441D7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32AB332B19FD866000441D7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32AB336519FD883600441D7A /* IRGElegirColorViewController.m in Sources */,
+				E129745E19FE4EBD00E7EA99 /* IRGPincelRelleno.m in Sources */,
+				32AB333819FD866000441D7A /* AppDelegate.m in Sources */,
+				E129746119FE551F00E7EA99 /* IRGAlmacenDeCeldas.m in Sources */,
+				E129745B19FE4D0F00E7EA99 /* IRGPincelNormal.m in Sources */,
+				32AB336019FD87A400441D7A /* IRGCanvasViewController.m in Sources */,
+				32AB333519FD866000441D7A /* main.m in Sources */,
+				32AB335719FD872400441D7A /* IRGTabBarController.m in Sources */,
+				32AB337419FD933300441D7A /* IRGCelda.m in Sources */,
+				32AB337119FD8BD400441D7A /* IRGCeldaViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32AB333E19FD866000441D7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32AB334919FD866000441D7A /* IRGDibujarTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32AB334419FD866000441D7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32AB332E19FD866000441D7A /* IRGDibujar */;
+			targetProxy = 32AB334319FD866000441D7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		32AB333B19FD866000441D7A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32AB333C19FD866000441D7A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32AB334A19FD866000441D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		32AB334B19FD866000441D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32AB334D19FD866000441D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = IRGDibujar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32AB334E19FD866000441D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = IRGDibujar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		32AB335019FD866000441D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IRGDibujarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IRGDibujar.app/IRGDibujar";
+			};
+			name = Debug;
+		};
+		32AB335119FD866000441D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IRGDibujarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IRGDibujar.app/IRGDibujar";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32AB332A19FD866000441D7A /* Build configuration list for PBXProject "IRGDibujar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32AB334A19FD866000441D7A /* Debug */,
+				32AB334B19FD866000441D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32AB334C19FD866000441D7A /* Build configuration list for PBXNativeTarget "IRGDibujar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32AB334D19FD866000441D7A /* Debug */,
+				32AB334E19FD866000441D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32AB334F19FD866000441D7A /* Build configuration list for PBXNativeTarget "IRGDibujarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32AB335019FD866000441D7A /* Debug */,
+				32AB335119FD866000441D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 32AB332719FD866000441D7A /* Project object */;
+}
