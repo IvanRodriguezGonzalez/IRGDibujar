@@ -9,11 +9,15 @@
 #import "IRGCanvasViewController.h"
 #import "IRGCeldaViewController.h"
 #import "IRGAlmacenDeCeldas.h"
+#import "IRGPincelRelleno.h"
 
 
 
 @interface IRGCanvasViewController ()
 
+- (IBAction)accionRellenar:(UIButton *)sender;
+
+- (IBAction)accionPintar:(UIButton *)sender;
 
 @end
 
@@ -45,7 +49,9 @@
                                                                                 posicionY:coordenadaY
                                                                                     ancho:ancho
                                                                                     alto:alto];
-        [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] añadirCelda:celda];
+        IRGCelda *celdaTmp = celda.view;
+        IRGAlmacenDeCeldas * almacenDeCeldasTmp = [IRGAlmacenDeCeldas sharedAlmacenDeCeldas];
+        [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] añadirCelda:celdaTmp];
         [self.view addSubview:celda.view];
         }}
 }
@@ -64,4 +70,11 @@
 }
 */
 
+- (IBAction)accionRellenar:(id)sender {
+    [IRGPincelRelleno sharedPincelRelleno].modoPintar = FALSE;
+}
+
+- (IBAction)accionPintar:(UIButton *)sender {
+    [IRGPincelRelleno sharedPincelRelleno].modoPintar = true;
+}
 @end

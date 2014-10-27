@@ -10,6 +10,7 @@
 #import "IRGCelda.h"
 #import "IRGPincelNormal.h"
 #import "IRGPincelRelleno.h"
+#import "IRGAlmacenDeCeldas.h"
 
 
 @interface IRGCeldaViewController ()
@@ -20,7 +21,6 @@
 @property (nonatomic) NSUInteger ancho;
 @property (nonatomic) UIColor *colorDelBordeDeLaCelda;
 @property (nonatomic)BOOL rellenada;
-@property (nonatomic) bool modoPintar;
 
 @end
 
@@ -60,22 +60,35 @@
 }
 
 - (void) celdaPulsada:(IRGCelda*)sender{
-    if(self.rellenada){
-        UIColor *colorDelBordeDelPincelNormal = [IRGPincelNormal sharedPincelNormal].colorDelBorde;
-        UIColor *colorDeRellenoDelPincelNormal = [IRGPincelNormal sharedPincelNormal].colorDelRelleno;
-        [sender setColorDelBorde:colorDelBordeDelPincelNormal];
-        self.view.backgroundColor = colorDeRellenoDelPincelNormal;
-        self.rellenada = FALSE;
-    }
-    else {
-        UIColor *colorDelBordeDelPincelRelleno = [IRGPincelRelleno sharedPincelRelleno].colorDelBorde;
-        UIColor *colorDeRellenoDelPincelRelleno = [IRGPincelRelleno sharedPincelRelleno].colorDelRelleno;
+    
+    if ([IRGPincelRelleno sharedPincelRelleno].modoPintar){
+        if(self.rellenada){
+            UIColor *colorDelBordeDelPincelNormal = [IRGPincelNormal sharedPincelNormal].colorDelBorde;
+            UIColor *colorDeRellenoDelPincelNormal = [IRGPincelNormal sharedPincelNormal].colorDelRelleno;
+            [sender setColorDelBorde:colorDelBordeDelPincelNormal];
+            self.view.backgroundColor = colorDeRellenoDelPincelNormal;
+            self.rellenada = FALSE;
+        }
+        else {
+            UIColor *colorDelBordeDelPincelRelleno = [IRGPincelRelleno sharedPincelRelleno].colorDelBorde;
+            UIColor *colorDeRellenoDelPincelRelleno = [IRGPincelRelleno sharedPincelRelleno].colorDelRelleno;
         
-        [sender setColorDelBorde:colorDelBordeDelPincelRelleno];
-        self.view.backgroundColor = colorDeRellenoDelPincelRelleno ;
-        self.rellenada = TRUE;
+            [sender setColorDelBorde:colorDelBordeDelPincelRelleno];
+            self.view.backgroundColor = colorDeRellenoDelPincelRelleno ;
+            self.rellenada = TRUE;
+        }
+    } else {
+        //estoy en modo rellenar
+        NSArray *todasLasCeldas =[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems];
+        UIColor *colorCeldaElegida = self.view.backgroundColor;
+            for (IRGCelda *celdaTmp in todasLasCeldas ){
+                if (celdaTmp.backgroundColor == colorCeldaElegida){
+                    celdaTmp.backgroundColor = [IRGPincelRelleno sharedPincelRelleno].colorDelRelleno;
+               //     celdaTmp.delegado.rellenada = true;
+                    [celdaTmp setNeedsDisplay];
+                }
+            }
     }
- //   [self.view setNeedsDisplay];
 }
 
 - (void)didReceiveMemoryWarning {

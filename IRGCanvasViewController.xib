@@ -19,12 +19,18 @@
                     <state key="normal" title="Rellenar">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accionRellenar:" destination="-1" eventType="touchUpInside" id="R1V-ER-4jh"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va1-ZX-lbz">
                     <rect key="frame" x="53" y="55" width="46" height="30"/>
                     <state key="normal" title="Pintar">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accionPintar:" destination="-1" eventType="touchUpInside" id="2JK-IU-lXc"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

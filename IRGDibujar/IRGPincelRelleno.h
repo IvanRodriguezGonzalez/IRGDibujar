@@ -12,6 +12,7 @@
 @interface IRGPincelRelleno : NSObject
 @property (nonatomic) UIColor *colorDelBorde;
 @property (nonatomic) UIColor *colorDelRelleno;
+@property (nonatomic) bool modoPintar;
 
 + (instancetype) sharedPincelRelleno;
 @end

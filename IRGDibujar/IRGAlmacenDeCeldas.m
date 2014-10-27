@@ -7,7 +7,7 @@
 //
 
 #import "IRGAlmacenDeCeldas.h"
-#import "IRGCelda.h";
+#import "IRGCelda.h"
 
 @interface IRGAlmacenDeCeldas ()
 
@@ -31,6 +31,7 @@
     static IRGAlmacenDeCeldas *_almaceDeCeldas;
     if(!_almaceDeCeldas){
         _almaceDeCeldas = [[IRGAlmacenDeCeldas alloc]initPrivado];
+        
     }
     return _almaceDeCeldas;
 }
@@ -46,6 +47,13 @@
 
 - (NSArray *) allItems {
     return [self.almacenDeCeldasPrivado copy];
+}
+
+- (NSMutableArray*) almacenDeCeldasPrivado{
+    if (!_almacenDeCeldasPrivado){
+        _almacenDeCeldasPrivado = [[NSMutableArray alloc]init];
+    }
+    return _almacenDeCeldasPrivado;
 }
 
 @end

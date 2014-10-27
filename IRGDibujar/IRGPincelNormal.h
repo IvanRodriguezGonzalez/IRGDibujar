@@ -13,6 +13,7 @@
 @property (nonatomic) UIColor *colorDelBorde;
 @property (nonatomic) UIColor *colorDelRelleno;
 
+
 + (instancetype) sharedPincelNormal;
 
 @end
