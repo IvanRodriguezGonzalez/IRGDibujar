@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-@class IRGCelda;
+@class IRGCeldaViewController;
 
 @interface IRGAlmacenDeCeldas : NSObject
 
 + (instancetype) sharedAlmacenDeCeldas;
 
-- (void) añadirCelda: (IRGCelda *)celda;
+- (void) añadirCelda: (IRGCeldaViewController *)celda;
 
 - (NSArray *) allItems;
 

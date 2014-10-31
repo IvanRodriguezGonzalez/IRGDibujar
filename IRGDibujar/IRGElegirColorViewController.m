@@ -14,6 +14,7 @@
 - (IBAction)azulPulsado:(UIButton *)sender;
 - (IBAction)verdePulsado:(UIButton *)sender;
 
+
 @end
 
 @implementation IRGElegirColorViewController

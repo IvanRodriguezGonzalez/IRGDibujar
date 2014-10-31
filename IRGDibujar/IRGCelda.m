@@ -32,6 +32,7 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.delegado celdaPulsada:self];
+    [self.superview touchesBegan:touches withEvent:event];
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -47,7 +48,17 @@
 
 -(void) setColorDelBorde:(UIColor *)colorDelBorde{
     _colorDelBorde = colorDelBorde;
-    NSLog(@"%@",_colorDelBorde);
+//    NSLog(@"%@",_colorDelBorde);
 }
+
+-(float) posicionX{
+    return self.frame.origin.x;
+}
+
+-(float) posicionY{
+    return self.frame.origin.y;
+}
+
+
 
 @end

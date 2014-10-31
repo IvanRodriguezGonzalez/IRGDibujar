@@ -1,20 +1,18 @@
 //
-//  IRGTabBarController.m
+//  IRGMainNavigationViewController.m
 //  IRGDibujar
 //
-//  Created by Ivan Rodriguez Gonzalez on 26/10/14.
+//  Created by Ivan Rodriguez Gonzalez on 30/10/14.
 //  Copyright (c) 2014 IvanRodriguez. All rights reserved.
 //
 
-#import "IRGTabBarController.h"
+#import "IRGMainNavigationViewController.h"
 
-@interface IRGTabBarController ()
+@interface IRGMainNavigationViewController ()
 
 @end
 
-@implementation IRGTabBarController
-
-
+@implementation IRGMainNavigationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

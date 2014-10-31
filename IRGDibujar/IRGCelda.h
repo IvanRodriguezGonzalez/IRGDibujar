@@ -13,6 +13,8 @@
 
 @interface IRGCelda : UIView
 @property (nonatomic) UIColor *colorDelBorde;
+@property (nonatomic,readonly) float posicionX;
+@property (nonatomic,readonly) float posicionY;
 @property (nonatomic) id<IRGCeldaProtocol> delegado;
 
 

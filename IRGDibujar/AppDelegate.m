@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "IRGTabBarController.h"
+#import "IRGMainNavigationViewController.h"
 #import "IRGCanvasViewController.h"
 #import "IRGElegirColorViewController.h"
 
@@ -24,13 +24,10 @@
     // Override point for customization after application launch.
     
     IRGCanvasViewController *canvasViewController = [[IRGCanvasViewController alloc]init];
-    IRGElegirColorViewController *elegirColorViewController = [[IRGElegirColorViewController alloc]init];
+     
+    IRGMainNavigationViewController * mvc = [[IRGMainNavigationViewController alloc] initWithRootViewController:canvasViewController];
     
-    
-    IRGTabBarController *tabBarController = [[IRGTabBarController alloc]init];
-    tabBarController.viewControllers = @[canvasViewController,elegirColorViewController];
-    
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = mvc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IRGCelda.h"
 #import "IRGCeldaProtocol.h"
+#import "IRGCeldaAlmacenada.h"
 
 @interface IRGCeldaViewController : UIViewController<IRGCeldaProtocol>
+
+@property (nonatomic,readonly)IRGCelda * celda;
+@property (nonatomic)BOOL rellenada;
 
 //designated initialier
 
@@ -20,5 +24,7 @@
                              alto:(NSUInteger)alto;
 
 
+
+- (BOOL)esIgual:(IRGCeldaAlmacenada *)celdaViewController;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "IRGAlmacenDeCeldas.h"
 #import "IRGCelda.h"
+#import "IRGCeldaViewController.h"
 
 @interface IRGAlmacenDeCeldas ()
 
@@ -41,8 +42,8 @@
     return self;
 }
 
-- (void) añadirCelda: (IRGCelda *)celda{
-    [self.almacenDeCeldasPrivado addObject:celda];
+- (void) añadirCelda: (IRGCeldaViewController *)celdaViewController{
+    [self.almacenDeCeldasPrivado addObject:celdaViewController];
 }
 
 - (NSArray *) allItems {
