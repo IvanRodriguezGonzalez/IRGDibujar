@@ -16,12 +16,14 @@
 
 
 @interface IRGCeldaViewController ()
+;
 
 @property (nonatomic) NSUInteger posicionX;
 @property (nonatomic) NSUInteger posicionY;
 @property (nonatomic) NSUInteger alto;
 @property (nonatomic) NSUInteger ancho;
 @property (nonatomic) UIColor *colorDelBordeDeLaCelda;
+@property (nonatomic) NSMutableArray * conjuntoDeCeldasPintadas;
 
 
 @end
@@ -29,16 +31,19 @@
 @implementation IRGCeldaViewController
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    return [self initWithPosicionX:0 posicionY:0 ancho:10 alto:10];
+    [NSException exceptionWithName:@"Invalid init" reason:@"Use..." userInfo:nil];
+    return FALSE;
 }
 
 //designated initializer
 -(instancetype) initWithPosicionX:(NSUInteger)posicionX
                         posicionY:(NSUInteger)posicionY
+                    numeroDeCelda:(NSUInteger)numeroDeCelda
                             ancho:(NSUInteger)ancho
                              alto:(NSUInteger)alto{
     _posicionX = posicionX;
     _posicionY = posicionY;
+    _numeroDeCelda = numeroDeCelda;
     _alto = alto;
     _ancho = ancho;
     return self;
@@ -69,7 +74,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CGRect frame = CGRectMake(self.posicionX, self.posicionY, self.alto, self.ancho);
+    CGRect frame = CGRectMake(self.posicionX, self.posicionY, self.ancho , self.alto);
     
     UIColor *colorDelBordeDelPincelNormal = [IRGPincelNormal sharedPincelNormal].colorDelBorde;
     UIColor *colorDeRellenoDelPincelNormal = [IRGPincelNormal sharedPincelNormal].colorDelRelleno;
@@ -86,51 +91,57 @@
 }
 
 - (void) celdaPulsada:(IRGCelda*)sender{
-    
 
-    NSMutableArray * conjuntoDeCeldasPintadas = [[NSMutableArray alloc] init];
+    self.conjuntoDeCeldasPintadas = [[NSMutableArray alloc] init];
 
+    if ([[IRGPincelRelleno sharedPincelRelleno].modoPincel isEqual:@"Pintar"]){
     
-    if ([IRGPincelRelleno sharedPincelRelleno].modoPintar){
-        
         UIColor * colorDelRellenoAntiguo = self.celda.backgroundColor;
         bool rellenadaAntigua = self.rellenada;
-        
         self.rellenada = ! self.rellenada;
-      
-        IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc] initWithCeldaAlmacenada:self.celda.frame
-                                                                        colorDelRellenoAntiguo:colorDelRellenoAntiguo
-                                                                          colorDelRellenoNuevo:self.celda.backgroundColor
-                                                                              rellenadaAntigua:rellenadaAntigua
-                                                                                rellenadaNueva:self.rellenada];
-        [conjuntoDeCeldasPintadas addObject:celdaPintada];
-
-        
-    } else {
-        //estoy en modo rellenar
-        NSArray *todasLosViewControllerDeLasCeldas =[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems];
-        UIColor *colorCeldaElegida = self.view.backgroundColor;
+        IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
+                                            initWithCeldaAlmacenada:self.numeroDeCelda
+                                            colorDelRellenoAntiguo:colorDelRellenoAntiguo
+                                            colorDelRellenoNuevo:self.celda.backgroundColor
+                                            rellenadaAntigua:rellenadaAntigua
+                                            rellenadaNueva:self.rellenada];
+        [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+        [[IRGAlmacenDeCambios sharedAlmacenDeCambios] nuevaVersionConCeldas:self.conjuntoDeCeldasPintadas];
+    }
+    else {
+        if ([[IRGPincelRelleno sharedPincelRelleno].modoPincel isEqual:@"RellenarNormal"]){
+            NSArray *todasLosViewControllerDeLasCeldas =[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems];
+            UIColor *colorCeldaElegida = self.celda.backgroundColor;
    
-        for (IRGCeldaViewController *celdaViewController in todasLosViewControllerDeLasCeldas ){
-                if (celdaViewController.view.backgroundColor == colorCeldaElegida){
+            for (IRGCeldaViewController *celdaViewController in todasLosViewControllerDeLasCeldas ){
+                if ([celdaViewController.celda.backgroundColor isEqual: colorCeldaElegida]){
 
                     bool rellenadaAntigua =celdaViewController.rellenada;
-
                     celdaViewController.rellenada = true;
-
-                    IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc] initWithCeldaAlmacenada:celdaViewController.celda.frame
-                                                                                    colorDelRellenoAntiguo:colorCeldaElegida
-                                                                                      colorDelRellenoNuevo:celdaViewController.celda.backgroundColor
-                                                                                          rellenadaAntigua:rellenadaAntigua
-                                                                                            rellenadaNueva:celdaViewController.rellenada];
-                    [conjuntoDeCeldasPintadas addObject:celdaPintada];
+                    IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
+                                                        initWithCeldaAlmacenada:celdaViewController.numeroDeCelda
+                                                        colorDelRellenoAntiguo:colorCeldaElegida
+                                                        colorDelRellenoNuevo:celdaViewController.celda.backgroundColor
+                                                        rellenadaAntigua:rellenadaAntigua
+                                                        rellenadaNueva:celdaViewController.rellenada];
+                    [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
                 }
             }
+            [[IRGAlmacenDeCambios sharedAlmacenDeCambios] nuevaVersionConCeldas:self.conjuntoDeCeldasPintadas];
+        }
+        else {
+            UIColor * colorAntiguo = self.celda.backgroundColor;
+            if ([self.celda.backgroundColor isEqual:[IRGPincelRelleno sharedPincelRelleno].colorDelRelleno]){
+                }
+            else {
+                [self colorearCeldaViewController:self
+                                  conColorAntiguo:colorAntiguo];
+                [[IRGAlmacenDeCambios sharedAlmacenDeCambios] nuevaVersionConCeldas:self.conjuntoDeCeldasPintadas];
+            }
+        }
+
     }
-    [[IRGAlmacenDeCambios sharedAlmacenDeCambios] nuevaVersionConCeldas:conjuntoDeCeldasPintadas];
-
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -151,11 +162,56 @@
 #pragma mark Propios
 
 - (BOOL)esIgual:(IRGCeldaAlmacenada *)celdaAlmacenada{
-    if ((self.celda.frame.origin.x == celdaAlmacenada.frame.origin.x) & (self.celda.frame.origin.y == celdaAlmacenada.frame.origin.y)){
+    if (self.numeroDeCelda == celdaAlmacenada.numeroDeCelda){
         return TRUE;
     }
     else {
         return FALSE;
+    }
+}
+
+- (void) colorearCeldaViewController:(IRGCeldaViewController *) celdaViewController
+conColorAntiguo: (UIColor *)colorAntiguo {
+    
+    if ([celdaViewController.celda.backgroundColor isEqual:colorAntiguo]){
+        
+        bool rellenadaAntigua =celdaViewController.rellenada;
+
+       // celdaViewController.celda.backgroundColor = colorNuevo;
+     //
+        
+    celdaViewController.rellenada = true;
+        
+        IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
+                                            initWithCeldaAlmacenada:celdaViewController.numeroDeCelda
+                                            colorDelRellenoAntiguo:colorAntiguo
+                                            colorDelRellenoNuevo:celdaViewController.celda.backgroundColor
+                                            rellenadaAntigua:rellenadaAntigua
+                                            rellenadaNueva:celdaViewController.rellenada];
+
+
+        
+        [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+ 
+         IRGCeldaViewController *siguienteCeldaEnLaFila = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] siguienteCeldaEnLaFila:celdaViewController];
+        if (siguienteCeldaEnLaFila){
+            [self colorearCeldaViewController:siguienteCeldaEnLaFila conColorAntiguo:colorAntiguo];
+        }
+        
+        IRGCeldaViewController *anteriorCeldaEnLaFila = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] anteriorCeldaEnLaFila:celdaViewController];
+        if (anteriorCeldaEnLaFila){
+            [self colorearCeldaViewController:anteriorCeldaEnLaFila conColorAntiguo:colorAntiguo];
+        }
+        
+        IRGCeldaViewController *celdaEnLaFilaSuperior = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] celdaEnLaFilaSuperior:celdaViewController];
+        if (celdaEnLaFilaSuperior){
+            [self colorearCeldaViewController:celdaEnLaFilaSuperior conColorAntiguo:colorAntiguo];
+        }
+        
+        IRGCeldaViewController *celdaEnLaFilaInferior = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] celdaEnLaFilaInferior:celdaViewController];
+        if (celdaEnLaFilaInferior){
+            [self colorearCeldaViewController:celdaEnLaFilaInferior conColorAntiguo:colorAntiguo];
+        }
     }
 }
 

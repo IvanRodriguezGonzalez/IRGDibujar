@@ -14,12 +14,17 @@
 @interface IRGCeldaViewController : UIViewController<IRGCeldaProtocol>
 
 @property (nonatomic,readonly)IRGCelda * celda;
+@property (nonatomic) NSUInteger numeroDeCelda;
 @property (nonatomic)BOOL rellenada;
+@property (nonatomic) NSUInteger numeroDeFila;
+@property (nonatomic) NSUInteger numeroDeColumna;
+
 
 //designated initialier
 
 -(instancetype) initWithPosicionX:(NSUInteger)posicionX
                         posicionY:(NSUInteger)posicionY
+                    numeroDeCelda:(NSUInteger)numeroDeCelda
                             ancho:(NSUInteger)ancho
                              alto:(NSUInteger)alto;
 

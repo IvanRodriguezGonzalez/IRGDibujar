@@ -11,7 +11,7 @@
 
 @interface IRGCeldaAlmacenada : NSObject
 
-@property (nonatomic) CGRect frame;
+@property (nonatomic) NSUInteger numeroDeCelda;
 @property (nonatomic) UIColor *colorDelRellenoAntiguo;
 @property (nonatomic) UIColor *colorDelRellenoNuevo;
 @property (nonatomic) BOOL rellenadaAntigua;
@@ -19,7 +19,7 @@
 
 
 //designated initializer
-- (instancetype) initWithCeldaAlmacenada: (CGRect) frame
+- (instancetype) initWithCeldaAlmacenada: (NSUInteger) numeroDeCelda
                          colorDelRellenoAntiguo:(UIColor *) colorDelRellenoAntiguo
                     colorDelRellenoNuevo:(UIColor *) colorDelRellenoNuevo
                         rellenadaAntigua: (bool) rellenadaAntigua

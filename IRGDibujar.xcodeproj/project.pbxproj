@@ -178,6 +178,7 @@
 		32AB336919FD8A3900441D7A /* Controlador */ = {
 			isa = PBXGroup;
 			children = (
+				328FC6AC1A02D4A300D36FF0 /* IRGMainNavigationViewController.h */,
 				32AB333619FD866000441D7A /* AppDelegate.h */,
 				32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */,
 				32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */,
@@ -187,7 +188,6 @@
 				32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */,
 				32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */,
 				32AB336319FD883600441D7A /* IRGElegirColorViewController.m */,
-				328FC6AC1A02D4A300D36FF0 /* IRGMainNavigationViewController.h */,
 				328FC6AD1A02D4A300D36FF0 /* IRGMainNavigationViewController.m */,
 			);
 			name = Controlador;

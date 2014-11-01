@@ -10,7 +10,7 @@
 
 @implementation IRGCeldaAlmacenada
 
-- (instancetype) initWithCeldaAlmacenada: (CGRect) frame
+- (instancetype) initWithCeldaAlmacenada: (NSUInteger) numeroDeCelda
                  colorDelRellenoAntiguo:(UIColor *)colorDelRellenoAntiguo
                     colorDelRellenoNuevo:(UIColor *) colorDelRellenoNuevo
                         rellenadaAntigua: (bool) rellenadaAntigua
@@ -20,7 +20,7 @@
     if (self) {
         _colorDelRellenoAntiguo = colorDelRellenoAntiguo;
         _colorDelRellenoNuevo = colorDelRellenoNuevo;
-        _frame = frame;
+        _numeroDeCelda = numeroDeCelda;
         _rellenadaAntigua = rellenadaAntigua;
         _rellenadaNueva = rellenadaNueva;
     }

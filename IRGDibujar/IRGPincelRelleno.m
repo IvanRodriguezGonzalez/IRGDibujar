@@ -29,8 +29,8 @@
 
 -(instancetype) initPrivado{
     self = [super init];
-    self.colorDelBorde = [UIColor blackColor];
-    self.colorDelRelleno = [UIColor greenColor];
+    self.colorDelBorde = [UIColor clearColor];
+    self.colorDelRelleno = [UIColor blackColor];
     return self;
 }
 

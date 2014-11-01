@@ -35,7 +35,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="443" y="527"/>
+            <point key="canvasLocation" x="544" y="504"/>
         </view>
     </objects>
 </document>
