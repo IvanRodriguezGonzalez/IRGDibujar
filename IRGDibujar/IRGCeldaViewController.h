@@ -15,9 +15,10 @@
 
 @property (nonatomic,readonly)IRGCelda * celda;
 @property (nonatomic) NSUInteger numeroDeCelda;
+
+
 @property (nonatomic)BOOL rellenada;
-@property (nonatomic) NSUInteger numeroDeFila;
-@property (nonatomic) NSUInteger numeroDeColumna;
+
 
 
 //designated initialier
@@ -31,5 +32,10 @@
 
 
 - (BOOL)esIgual:(IRGCeldaAlmacenada *)celdaViewController;
+
+
+- (void) actualizarViewControllerYDibujaCeldaConColorDelTrazoDeLaCelda:(UIColor *) colorDelTrazoDeLaCelda
+                                              colorDelRellenoDeLaCelda:(UIColor *) colorDelRellenoDeLaCelda
+                                              grosorDelPincelDeLaCElda:(NSUInteger) grosorDelPincelDeLaCelda;
 
 @end

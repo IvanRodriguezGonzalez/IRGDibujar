@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGDibujar/IRGCeldaViewController.m"
-            timestampString = "436497469.188636"
+            timestampString = "436563415.452424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-celdaPulsada:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IRGDibujar/IRGCeldaViewController.m"
-            timestampString = "436497791.269477"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-colorearCeldaViewController:conColorAntiguo:"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-celdaPulsadaConModoRellenarExtendido"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -10,77 +10,50 @@
 #import "IRGCanvasViewController.h"
 #import "IRGCeldaViewController.h"
 #import "IRGAlmacenDeCeldas.h"
-#import "IRGPincelRelleno.h"
 #import "IRGAlmacenDeCambios.h"
 #import "IRGCeldaAlmacenada.h"
-#import "IRGElegirColorViewController.h"
+#import "IRGPincel.h"
 
 
 
 @interface IRGCanvasViewController ()
 
-
-
-
 @property (weak, nonatomic) IBOutlet UIView *barraDeIconos;
-
-@property (weak, nonatomic) IBOutlet UIView *celdaPintar;
-@property (weak, nonatomic) IBOutlet UIView *celdaRellenar;
 @property (weak, nonatomic) IBOutlet UIView *colorElegido;
 
-- (IBAction)establecerColor:(UIButton *)sender;
-
 - (IBAction)accionRellenar:(UIButton *)sender;
-
 - (IBAction)accionRellenarExtendido:(UIButton *)sender;
-
 - (IBAction)accionPintar:(UIButton *)sender;
-
-
 - (IBAction)retrocederVersion:(id)sender;
-
 - (IBAction)avanzarVersion:(UIButton *)sender;
-
 - (void) seleccionarColor;
 
 @end
 
 @implementation IRGCanvasViewController
 
-
 #pragma mark - Inicializadores
 
+//designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        [IRGPincelRelleno sharedPincelRelleno].modoPincel = @"Pintar";
-        
-        
         UIBarButtonItem * botonIzquierdo = [[UIBarButtonItem alloc]
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
                                              target:self
                                              action:@selector(retrocederVersion:)];
-    /*    UIBarButtonItem * botonDerechoUno =[[UIBarButtonItem alloc]
-                                            initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
-                                            target:self
-                                            action:@selector(seleccionarColor)];*/
         
         UIBarButtonItem * botonDerecho=[[UIBarButtonItem alloc]
                                             initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
                                             target:self
                                             action:@selector(avanzarVersion:)];
         
-        
+        NSArray *botonesIzquierdos = @[botonIzquierdo];
         NSArray *botonesDerechos = @[botonDerecho];
         self.navigationItem.rightBarButtonItems = botonesDerechos;
-        self.navigationItem.leftBarButtonItem = botonIzquierdo;
-        
-        
-   /*     for (UIBarButtonItem *item in self.navigationItem.rightBarButtonItems){
-            [item setTintColor:[UIColor grayColor]];
-        }*/
+        self.navigationItem.leftBarButtonItems = botonesIzquierdos;
     }
     return self;
 }
@@ -88,32 +61,29 @@
 
 #pragma mark - Overrides
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
  
     self.view.frame = [[UIApplication sharedApplication] keyWindow].frame;
+    
     NSUInteger posicionX;
-    NSUInteger posicionY = 70;
-    NSUInteger ancho =20;
-    NSUInteger alto =20;
+    NSUInteger posicionY =  70;
+    NSUInteger ancho =15;
+    NSUInteger alto =15;
     
     NSUInteger numeroDeCelda;
     NSUInteger anchoBarraDeIconos = self.barraDeIconos.frame.size.width;
-    NSUInteger anchoDeLaVentanaAjustado = self.view.frame.size.width;
+    NSUInteger anchoDeLaVentana = self.view.frame.size.width;
     
     
-    NSUInteger numeroDeCeldasEnCadaFila = (anchoDeLaVentanaAjustado - anchoBarraDeIconos) / ancho;
-    NSUInteger bordeHorizontal = anchoDeLaVentanaAjustado - numeroDeCeldasEnCadaFila*ancho- anchoBarraDeIconos;
+    NSUInteger numeroDeCeldasEnCadaFila = (anchoDeLaVentana - anchoBarraDeIconos) / ancho;
+    NSUInteger bordeHorizontal = anchoDeLaVentana - numeroDeCeldasEnCadaFila*ancho- anchoBarraDeIconos;
     
     posicionX = anchoBarraDeIconos + (bordeHorizontal/2);
     
     
     for (NSUInteger coordenadaY = posicionY;coordenadaY+alto<=self.view.frame.size.height;coordenadaY+= alto){
-        for (NSUInteger coordenadax = posicionX;coordenadax+ancho<=anchoDeLaVentanaAjustado;coordenadax += ancho){
+        for (NSUInteger coordenadax = posicionX;coordenadax+ancho<=anchoDeLaVentana;coordenadax += ancho){
                 
             numeroDeCelda = [[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems] count];
             
@@ -128,8 +98,6 @@
         }}
     
     [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] setNumeroDeColumnas:numeroDeCeldasEnCadaFila];
-    IRGAlmacenDeCeldas * a = [IRGAlmacenDeCeldas sharedAlmacenDeCeldas];
-    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -147,32 +115,23 @@
 */
 
 - (IBAction)establecerColor:(UIButton *)sender {
-      [IRGPincelRelleno sharedPincelRelleno].colorDelRelleno = sender.backgroundColor ;
+      [IRGPincel sharedPincel].colorDeRellenoDelPincel = sender.backgroundColor ;
     self.colorElegido.backgroundColor = sender.backgroundColor;
 }
 
 - (IBAction)accionRellenar:(id)sender {
-    [IRGPincelRelleno sharedPincelRelleno].modoPincel = @"RellenarExtendido";
-    [self.celdaPintar setBackgroundColor:self.barraDeIconos.backgroundColor];
-    [self.celdaRellenar setBackgroundColor:[UIColor redColor]];
-    
+    [IRGPincel sharedPincel].modoPincel = @"RellenarNormal";
+    self.navigationItem.title = @"Rellenar";
 }
 
 - (IBAction)accionRellenarExtendido:(UIButton *)sender {
-    [IRGPincelRelleno sharedPincelRelleno].modoPincel = @"RellenarNormal";
-    [self.celdaPintar setBackgroundColor:self.barraDeIconos.backgroundColor];
-    [self.celdaRellenar setBackgroundColor: self.barraDeIconos.backgroundColor];
+    [IRGPincel sharedPincel].modoPincel = @"RellenarExtendido";
+    self.navigationItem.title = @"Rellenar extendido";
 }
 
 - (IBAction)accionPintar:(UIButton *)sender {
-    [IRGPincelRelleno sharedPincelRelleno].modoPincel = @"Pintar";
-    [self.celdaRellenar setBackgroundColor:self.barraDeIconos.backgroundColor];
-    [self.celdaPintar setBackgroundColor:[UIColor redColor]];
-    
-    
-}
-
-- (IBAction)colorUno:(UIButton *)sender {
+    [IRGPincel sharedPincel].modoPincel = @"Pintar";
+    self.navigationItem.title = @"Pintar";
 }
 
 - (IBAction)retrocederVersion:(id)sender {
@@ -181,7 +140,6 @@
         [self refrescarCanvasConCeldasCambiadas:celdasCambiadasEnEstaVersion
                              usarVersionAntigua:TRUE];
     }
-
 }
 
 - (IBAction)avanzarVersion:(UIButton *)sender {
@@ -193,38 +151,37 @@
     }
 }
 
-- (void) seleccionarColor{
-    IRGElegirColorViewController *elegirColorViewController = [[IRGElegirColorViewController alloc]init];
-    [self.navigationController pushViewController:elegirColorViewController animated:YES];
-}
 #pragma mark - Propios
 
-
-
-- (void) refrescarCanvasConCeldasCambiadas:(NSArray *)celdasCambiadasEnEstaVersion usarVersionAntigua:(bool) usarVersionAntigua{
+- (void) refrescarCanvasConCeldasCambiadas:(NSArray *)celdasCambiadasEnEstaVersion
+                        usarVersionAntigua:(bool) usarVersionAntigua{
     
-    NSArray * todasLasCeldas;
+    NSArray * todasLasCeldas = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems];
+    
     IRGCeldaViewController * celdaViewController;
     
     for (IRGCeldaAlmacenada * celdaAlmacenada in celdasCambiadasEnEstaVersion){
-       
-        todasLasCeldas = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems] ;
+
         celdaViewController = [todasLasCeldas objectAtIndex: celdaAlmacenada.numeroDeCelda];
-                               
+        
+        UIColor * colorDelTrazo ;
+        UIColor * colorDelRelleno ;
+        NSUInteger grosorDelTrazo;
+
         if (usarVersionAntigua){
-            celdaViewController.rellenada = celdaAlmacenada.rellenadaAntigua;
-            celdaViewController.celda.backgroundColor = celdaAlmacenada.colorDelRellenoAntiguo;
-                    
+            colorDelTrazo= celdaAlmacenada.colorDelTrazoAntiguo;
+            colorDelRelleno = celdaAlmacenada.colorDelRellenoAntiguo;
+            grosorDelTrazo = celdaAlmacenada.grosorDelTrazoAntiguo;
         }
         else {
-            celdaViewController.rellenada = celdaAlmacenada.rellenadaNueva;
-            celdaViewController.celda.backgroundColor = celdaAlmacenada.colorDelRellenoNuevo;
+            colorDelTrazo= celdaAlmacenada.colorDelTrazoNuevo;
+            colorDelRelleno = celdaAlmacenada.colorDelRellenoNuevo;
+            grosorDelTrazo = celdaAlmacenada.grosorDelTrazoNuevo;
         }
-                
-        [celdaViewController.celda setNeedsDisplay];
-                
+        [celdaViewController actualizarViewControllerYDibujaCeldaConColorDelTrazoDeLaCelda:colorDelTrazo
+                                                                  colorDelRellenoDeLaCelda:colorDelRelleno grosorDelPincelDeLaCElda:grosorDelTrazo];
     }
-};
+}
 
 
 @end

@@ -12,13 +12,15 @@
 
 
 @interface IRGCelda : UIView
+
 @property (nonatomic) UIColor *colorDelBorde;
-@property (nonatomic,readonly) float posicionX;
-@property (nonatomic,readonly) float posicionY;
+@property (nonatomic) NSUInteger grosorDelTrazoDeLaCelda;
+
 @property (nonatomic) id<IRGCeldaProtocol> delegado;
 
 
 - (instancetype) initWithFrame:(CGRect)frame
-                 colorDelBorde:(UIColor *)colorDelBorde;
+                 colorDelBorde:(UIColor *)colorDelBorde
+                grosorDelTrazo:(NSUInteger) grosorDelTrazo;
 
 @end

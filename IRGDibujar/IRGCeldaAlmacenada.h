@@ -14,15 +14,21 @@
 @property (nonatomic) NSUInteger numeroDeCelda;
 @property (nonatomic) UIColor *colorDelRellenoAntiguo;
 @property (nonatomic) UIColor *colorDelRellenoNuevo;
-@property (nonatomic) BOOL rellenadaAntigua;
-@property (nonatomic) BOOL rellenadaNueva;
+@property (nonatomic) UIColor *colorDelTrazoAntiguo;
+@property (nonatomic) UIColor *colorDelTrazoNuevo;
+@property (nonatomic) NSUInteger grosorDelTrazoAntiguo;
+@property (nonatomic) NSUInteger grosorDelTrazoNuevo;
+
+
 
 
 //designated initializer
 - (instancetype) initWithCeldaAlmacenada: (NSUInteger) numeroDeCelda
                          colorDelRellenoAntiguo:(UIColor *) colorDelRellenoAntiguo
                     colorDelRellenoNuevo:(UIColor *) colorDelRellenoNuevo
-                        rellenadaAntigua: (bool) rellenadaAntigua
-                          rellenadaNueva: (bool) rellenadaNueva;
+                    colorDelTrazoAntiguo: (UIColor *) colorDelTrazoAntiguo
+                      colorDelTrazoNuevo:(UIColor *) colorDelTrazoNuevo
+                   grosorDelTrazoAntiguo:(NSUInteger) grosorDelTrazoAntiguo
+                     grosorDelTrazoNuevo:(NSUInteger) gorsoeDelTrazoNuevo;
 
 @end

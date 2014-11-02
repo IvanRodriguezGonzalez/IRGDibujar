@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "IRGMainNavigationViewController.h"
 #import "IRGCanvasViewController.h"
-#import "IRGElegirColorViewController.h"
+
 
 
 @interface AppDelegate ()

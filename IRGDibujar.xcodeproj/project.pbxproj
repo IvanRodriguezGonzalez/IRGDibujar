@@ -17,13 +17,12 @@
 		32AB334919FD866000441D7A /* IRGDibujarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB334819FD866000441D7A /* IRGDibujarTests.m */; };
 		32AB336019FD87A400441D7A /* IRGCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */; };
 		32AB336119FD87A400441D7A /* IRGCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */; };
-		32AB336519FD883600441D7A /* IRGElegirColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB336319FD883600441D7A /* IRGElegirColorViewController.m */; };
 		32AB336619FD883600441D7A /* IRGElegirColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */; };
 		32AB337119FD8BD400441D7A /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */; };
 		32AB337419FD933300441D7A /* IRGCelda.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB337319FD933300441D7A /* IRGCelda.m */; };
-		E129745B19FE4D0F00E7EA99 /* IRGPincelNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = E129745A19FE4D0F00E7EA99 /* IRGPincelNormal.m */; };
-		E129745E19FE4EBD00E7EA99 /* IRGPincelRelleno.m in Sources */ = {isa = PBXBuildFile; fileRef = E129745D19FE4EBD00E7EA99 /* IRGPincelRelleno.m */; };
 		E129746119FE551F00E7EA99 /* IRGAlmacenDeCeldas.m in Sources */ = {isa = PBXBuildFile; fileRef = E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */; };
+		E12FB91B1A05159900161A6B /* IRGPincel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FB91A1A05159900161A6B /* IRGPincel.m */; };
+		E12FB91E1A05188A00161A6B /* IRGLienzo.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FB91D1A05188A00161A6B /* IRGLienzo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,20 +55,18 @@
 		32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRGCanvasViewController.h; path = ../IRGCanvasViewController.h; sourceTree = "<group>"; };
 		32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRGCanvasViewController.m; path = ../IRGCanvasViewController.m; sourceTree = "<group>"; };
 		32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IRGCanvasViewController.xib; path = ../IRGCanvasViewController.xib; sourceTree = "<group>"; };
-		32AB336219FD883600441D7A /* IRGElegirColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGElegirColorViewController.h; sourceTree = "<group>"; };
-		32AB336319FD883600441D7A /* IRGElegirColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGElegirColorViewController.m; sourceTree = "<group>"; };
 		32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGElegirColorViewController.xib; sourceTree = "<group>"; };
 		32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCeldaViewController.h; sourceTree = "<group>"; };
 		32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCeldaViewController.m; sourceTree = "<group>"; };
 		32AB337219FD933300441D7A /* IRGCelda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCelda.h; sourceTree = "<group>"; };
 		32AB337319FD933300441D7A /* IRGCelda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCelda.m; sourceTree = "<group>"; };
 		32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCeldaProtocol.h; sourceTree = "<group>"; };
-		E129745919FE4D0F00E7EA99 /* IRGPincelNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincelNormal.h; sourceTree = "<group>"; };
-		E129745A19FE4D0F00E7EA99 /* IRGPincelNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincelNormal.m; sourceTree = "<group>"; };
-		E129745C19FE4EBD00E7EA99 /* IRGPincelRelleno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincelRelleno.h; sourceTree = "<group>"; };
-		E129745D19FE4EBD00E7EA99 /* IRGPincelRelleno.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincelRelleno.m; sourceTree = "<group>"; };
 		E129745F19FE551F00E7EA99 /* IRGAlmacenDeCeldas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGAlmacenDeCeldas.h; sourceTree = "<group>"; };
 		E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGAlmacenDeCeldas.m; sourceTree = "<group>"; };
+		E12DE88E1A05547A00FAE69A /* IRGPincel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincel.h; sourceTree = "<group>"; };
+		E12FB91A1A05159900161A6B /* IRGPincel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincel.m; sourceTree = "<group>"; };
+		E12FB91C1A05188A00161A6B /* IRGLienzo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGLienzo.h; sourceTree = "<group>"; };
+		E12FB91D1A05188A00161A6B /* IRGLienzo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGLienzo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,16 +147,16 @@
 		32AB336719FD8A2500441D7A /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
-				E129745F19FE551F00E7EA99 /* IRGAlmacenDeCeldas.h */,
-				325041601A018B4800B5AAD1 /* IRGCeldaAlmacenada.h */,
 				3250415D1A01739700B5AAD1 /* IRGAlmacenDeCambios.h */,
-				E129745C19FE4EBD00E7EA99 /* IRGPincelRelleno.h */,
-				E129745919FE4D0F00E7EA99 /* IRGPincelNormal.h */,
-				325041611A018B4800B5AAD1 /* IRGCeldaAlmacenada.m */,
-				E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */,
 				3250415E1A01739700B5AAD1 /* IRGAlmacenDeCambios.m */,
-				E129745D19FE4EBD00E7EA99 /* IRGPincelRelleno.m */,
-				E129745A19FE4D0F00E7EA99 /* IRGPincelNormal.m */,
+				E129745F19FE551F00E7EA99 /* IRGAlmacenDeCeldas.h */,
+				E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */,
+				325041601A018B4800B5AAD1 /* IRGCeldaAlmacenada.h */,
+				325041611A018B4800B5AAD1 /* IRGCeldaAlmacenada.m */,
+				E12DE88E1A05547A00FAE69A /* IRGPincel.h */,
+				E12FB91A1A05159900161A6B /* IRGPincel.m */,
+				E12FB91C1A05188A00161A6B /* IRGLienzo.h */,
+				E12FB91D1A05188A00161A6B /* IRGLienzo.m */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -178,16 +175,14 @@
 		32AB336919FD8A3900441D7A /* Controlador */ = {
 			isa = PBXGroup;
 			children = (
-				328FC6AC1A02D4A300D36FF0 /* IRGMainNavigationViewController.h */,
 				32AB333619FD866000441D7A /* AppDelegate.h */,
-				32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */,
-				32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */,
-				32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */,
-				32AB336219FD883600441D7A /* IRGElegirColorViewController.h */,
 				32AB333719FD866000441D7A /* AppDelegate.m */,
+				32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */,
 				32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */,
+				32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */,
+				32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */,
 				32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */,
-				32AB336319FD883600441D7A /* IRGElegirColorViewController.m */,
+				328FC6AC1A02D4A300D36FF0 /* IRGMainNavigationViewController.h */,
 				328FC6AD1A02D4A300D36FF0 /* IRGMainNavigationViewController.m */,
 			);
 			name = Controlador;
@@ -294,18 +289,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32AB336519FD883600441D7A /* IRGElegirColorViewController.m in Sources */,
-				E129745E19FE4EBD00E7EA99 /* IRGPincelRelleno.m in Sources */,
 				32AB333819FD866000441D7A /* AppDelegate.m in Sources */,
 				E129746119FE551F00E7EA99 /* IRGAlmacenDeCeldas.m in Sources */,
 				328FC6AE1A02D4A300D36FF0 /* IRGMainNavigationViewController.m in Sources */,
-				E129745B19FE4D0F00E7EA99 /* IRGPincelNormal.m in Sources */,
+				E12FB91E1A05188A00161A6B /* IRGLienzo.m in Sources */,
 				3250415F1A01739700B5AAD1 /* IRGAlmacenDeCambios.m in Sources */,
 				32AB336019FD87A400441D7A /* IRGCanvasViewController.m in Sources */,
 				32AB333519FD866000441D7A /* main.m in Sources */,
 				325041621A018B4800B5AAD1 /* IRGCeldaAlmacenada.m in Sources */,
 				32AB337419FD933300441D7A /* IRGCelda.m in Sources */,
 				32AB337119FD8BD400441D7A /* IRGCeldaViewController.m in Sources */,
+				E12FB91B1A05159900161A6B /* IRGPincel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

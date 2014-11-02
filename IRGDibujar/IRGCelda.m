@@ -10,29 +10,35 @@
 
 @interface IRGCelda ()
 
+
+@property (nonatomic,readonly) float posicionX;
+@property (nonatomic,readonly) float posicionY;
+
 @end
 
 @implementation IRGCelda
 
 - (instancetype) initWithFrame:(CGRect)frame{
     return [self initWithFrame:frame
-                    colorDelBorde:[UIColor redColor]];
+                 colorDelBorde:[UIColor redColor]
+                grosorDelTrazo:1];
 }
 
 
 - (instancetype) initWithFrame:(CGRect)frame
-                 colorDelBorde:(UIColor *)colorDelBorde{
+                 colorDelBorde:(UIColor *)colorDelBorde
+                grosorDelTrazo:(NSUInteger) grosorDelTrazo; {
 
     self = [super initWithFrame:frame];
     if (self){
-        self.colorDelBorde = colorDelBorde;
+        _colorDelBorde = colorDelBorde;
+        _grosorDelTrazoDeLaCelda = grosorDelTrazo;
     }
     return self;
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.delegado celdaPulsada:self];
-    [self.superview touchesBegan:touches withEvent:event];
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -42,7 +48,7 @@
 
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds ];
     [self.colorDelBorde setStroke];
-    path.lineWidth = 1;
+    path.lineWidth = self.grosorDelTrazoDeLaCelda;
     [path stroke];
 }
 

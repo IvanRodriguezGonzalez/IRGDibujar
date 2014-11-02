@@ -11,18 +11,23 @@
 @implementation IRGCeldaAlmacenada
 
 - (instancetype) initWithCeldaAlmacenada: (NSUInteger) numeroDeCelda
-                 colorDelRellenoAntiguo:(UIColor *)colorDelRellenoAntiguo
+                  colorDelRellenoAntiguo:(UIColor *) colorDelRellenoAntiguo
                     colorDelRellenoNuevo:(UIColor *) colorDelRellenoNuevo
-                        rellenadaAntigua: (bool) rellenadaAntigua
-                          rellenadaNueva: (bool) rellenadaNueva;{
+                    colorDelTrazoAntiguo: (UIColor *) colorDelTrazoAntiguo
+                      colorDelTrazoNuevo:(UIColor *) colorDelTrazoNuevo
+                   grosorDelTrazoAntiguo:(NSUInteger) grosorDelTrazoAntiguo
+                     grosorDelTrazoNuevo:(NSUInteger) grosorDelTrazoNuevo {
     
     self = [super  init];
     if (self) {
+        _numeroDeCelda = numeroDeCelda;
         _colorDelRellenoAntiguo = colorDelRellenoAntiguo;
         _colorDelRellenoNuevo = colorDelRellenoNuevo;
-        _numeroDeCelda = numeroDeCelda;
-        _rellenadaAntigua = rellenadaAntigua;
-        _rellenadaNueva = rellenadaNueva;
+        _colorDelTrazoAntiguo = colorDelTrazoAntiguo;
+        _colorDelTrazoNuevo = colorDelTrazoNuevo;
+        _grosorDelTrazoAntiguo = grosorDelTrazoAntiguo;
+        _grosorDelTrazoNuevo = grosorDelTrazoNuevo;
+
     }
     return self;
 }
