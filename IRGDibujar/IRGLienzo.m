@@ -37,7 +37,7 @@
 - (void) establecerCeldaSinPintarPorDefecto {
     
     self.colorDelTrazoDeLaCeldaSinPintar = [UIColor lightGrayColor];
-    self.colorDelRellenoDeLaCeldaSinPintar = [UIColor clearColor];
+    self.colorDelRellenoDeLaCeldaSinPintar = [UIColor whiteColor];
     self.grosoDelTrazoDeLaCeldaSinPintar = 1;
 }
 

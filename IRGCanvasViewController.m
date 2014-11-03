@@ -26,8 +26,9 @@
 - (IBAction)accionPintar:(UIButton *)sender;
 - (IBAction)retrocederVersion:(id)sender;
 - (IBAction)avanzarVersion:(UIButton *)sender;
-- (void) seleccionarColor;
+- (IBAction)accionBorrar:(UIButton *)sender;
 
+- (IBAction)establecerColor:(UIButton *)sender;
 @end
 
 @implementation IRGCanvasViewController
@@ -68,21 +69,21 @@
     
     NSUInteger posicionX;
     NSUInteger posicionY =  70;
-    NSUInteger ancho =15;
-    NSUInteger alto =15;
+    NSUInteger ancho =30;
+    NSUInteger alto =30;
     
     NSUInteger numeroDeCelda;
-    NSUInteger anchoBarraDeIconos = self.barraDeIconos.frame.size.width;
+    NSUInteger altoBarraDeIconos = self.barraDeIconos.frame.size.height;
     NSUInteger anchoDeLaVentana = self.view.frame.size.width;
     
     
-    NSUInteger numeroDeCeldasEnCadaFila = (anchoDeLaVentana - anchoBarraDeIconos) / ancho;
-    NSUInteger bordeHorizontal = anchoDeLaVentana - numeroDeCeldasEnCadaFila*ancho- anchoBarraDeIconos;
+    NSUInteger numeroDeCeldasEnCadaFila = (anchoDeLaVentana) / ancho;
+    NSUInteger bordeHorizontal = anchoDeLaVentana - numeroDeCeldasEnCadaFila*ancho;
     
-    posicionX = anchoBarraDeIconos + (bordeHorizontal/2);
+    posicionX = bordeHorizontal/2;
     
     
-    for (NSUInteger coordenadaY = posicionY;coordenadaY+alto<=self.view.frame.size.height;coordenadaY+= alto){
+    for (NSUInteger coordenadaY = posicionY+altoBarraDeIconos;coordenadaY+alto<=self.view.frame.size.height;coordenadaY+= alto){
         for (NSUInteger coordenadax = posicionX;coordenadax+ancho<=anchoDeLaVentana;coordenadax += ancho){
                 
             numeroDeCelda = [[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems] count];
@@ -96,6 +97,16 @@
         [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] añadirCelda:celdaViewController];
         [self.view addSubview:celdaViewController.view];
         }}
+    
+    NSArray *todasLasCeldas = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas]allItems];
+    for (NSArray *versionAProcesar in [[IRGAlmacenDeCambios sharedAlmacenDeCambios]todasLasVersiones]){
+        for (IRGCeldaAlmacenada *celdaAlmacenadaAProcesar in versionAProcesar)
+        {
+            [todasLasCeldas[celdaAlmacenadaAProcesar.numeroDeCelda] dibujarCeldaConCeldaAlmacenadaConVersionNueva:celdaAlmacenadaAProcesar];
+        }
+    }
+    [[IRGAlmacenDeCambios sharedAlmacenDeCambios] setVersionActual:[[IRGAlmacenDeCambios sharedAlmacenDeCambios] numeroDeVersiones]];
+
     
     [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] setNumeroDeColumnas:numeroDeCeldasEnCadaFila];
 }
@@ -115,7 +126,7 @@
 */
 
 - (IBAction)establecerColor:(UIButton *)sender {
-      [IRGPincel sharedPincel].colorDeRellenoDelPincel = sender.backgroundColor ;
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = sender.backgroundColor ;
     self.colorElegido.backgroundColor = sender.backgroundColor;
 }
 
@@ -135,8 +146,9 @@
 }
 
 - (IBAction)retrocederVersion:(id)sender {
+    
     NSArray * celdasCambiadasEnEstaVersion = [[IRGAlmacenDeCambios sharedAlmacenDeCambios] versionAnterior];
-    if (celdasCambiadasEnEstaVersion != [NSNull null]){
+    if (celdasCambiadasEnEstaVersion){
         [self refrescarCanvasConCeldasCambiadas:celdasCambiadasEnEstaVersion
                              usarVersionAntigua:TRUE];
     }
@@ -151,6 +163,13 @@
     }
 }
 
+- (IBAction)accionBorrar:(UIButton *)sender {
+    [IRGPincel sharedPincel].modoPincel = @"Borrar";
+    self.navigationItem.title = @"Borrar";
+    
+}
+
+
 #pragma mark - Propios
 
 - (void) refrescarCanvasConCeldasCambiadas:(NSArray *)celdasCambiadasEnEstaVersion
@@ -162,24 +181,13 @@
     
     for (IRGCeldaAlmacenada * celdaAlmacenada in celdasCambiadasEnEstaVersion){
 
-        celdaViewController = [todasLasCeldas objectAtIndex: celdaAlmacenada.numeroDeCelda];
-        
-        UIColor * colorDelTrazo ;
-        UIColor * colorDelRelleno ;
-        NSUInteger grosorDelTrazo;
-
+        celdaViewController = [todasLasCeldas objectAtIndex:celdaAlmacenada.numeroDeCelda];
         if (usarVersionAntigua){
-            colorDelTrazo= celdaAlmacenada.colorDelTrazoAntiguo;
-            colorDelRelleno = celdaAlmacenada.colorDelRellenoAntiguo;
-            grosorDelTrazo = celdaAlmacenada.grosorDelTrazoAntiguo;
+            [celdaViewController dibujarCeldaConCeldaAlmacenadaConVersionAntigua:celdaAlmacenada];
         }
         else {
-            colorDelTrazo= celdaAlmacenada.colorDelTrazoNuevo;
-            colorDelRelleno = celdaAlmacenada.colorDelRellenoNuevo;
-            grosorDelTrazo = celdaAlmacenada.grosorDelTrazoNuevo;
+            [celdaViewController dibujarCeldaConCeldaAlmacenadaConVersionNueva:celdaAlmacenada];
         }
-        [celdaViewController actualizarViewControllerYDibujaCeldaConColorDelTrazoDeLaCelda:colorDelTrazo
-                                                                  colorDelRellenoDeLaCelda:colorDelRelleno grosorDelPincelDeLaCElda:grosorDelTrazo];
     }
 }
 

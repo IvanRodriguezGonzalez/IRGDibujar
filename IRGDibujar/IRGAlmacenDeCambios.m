@@ -7,25 +7,28 @@
 //
 
 #import "IRGAlmacenDeCambios.h"
+#import "IRGAlmacenDeCeldas.h"
+#import "IRGCeldaViewController.h"
 
 @interface IRGAlmacenDeCambios ()
 
 @property (nonatomic) NSMutableArray * versiones;
+@property (nonatomic,readonly) NSString * nombreDelArchivo;
 
 @end
 
 @implementation IRGAlmacenDeCambios
 
 
-#pragma mark Inicializadores
+#pragma mark - Inicializadores
 
 //designated initilizer
 + (instancetype) sharedAlmacenDeCambios{
     
     static IRGAlmacenDeCambios *_almaceDeCambios;
+    
     if(!_almaceDeCambios){
         _almaceDeCambios = [[IRGAlmacenDeCambios alloc] initPrivado];
-        
     }
     return _almaceDeCambios;
 }
@@ -33,8 +36,17 @@
 
 -(instancetype) initPrivado{
     self = [super init];
-    self.versiones = [[NSMutableArray alloc] init];
-    self.versiones[0] = [NSNull null];
+    
+    NSFileManager *fileManagerPrincipal = [NSFileManager defaultManager];
+    
+    if ([fileManagerPrincipal fileExistsAtPath:   [self pathDelArchivoConHistorialDeCambios] ]){
+        _versiones = [NSKeyedUnarchiver unarchiveObjectWithFile: [self pathDelArchivoConHistorialDeCambios]];
+    }
+    else {
+        _versiones = [[NSMutableArray alloc] init];
+    }
+    
+    self.numeroDeVersiones = self.versiones.count;
     return self;
 }
 
@@ -43,18 +55,29 @@
     return false;
 }
 
-#pragma mark Propios
+
+
+#pragma mark - Accesors
+
+- (NSString *) nombreDelArchivo{
+    return @"Dibujo.historial";
+}
+
+
+#pragma mark  - Propios - publicos
+
+
+-(bool) grabarCambios{
+    
+    [self eliminaVersionesDesdeLaVersionActual];
+    return [NSKeyedArchiver archiveRootObject:self.versiones toFile:[self pathDelArchivoConHistorialDeCambios]];
+}
 
 - (void) nuevaVersionConCeldas: (NSArray *)celdas{
     
-    int  versionesAEliminar = self.numeroDeVersiones - self.versionActual;
-    
-    for (int i = 0;i<versionesAEliminar;i++){
-        [self.versiones removeLastObject];
-    }
-    
-    self.numeroDeVersiones = self.versionActual;
 
+    [self eliminaVersionesDesdeLaVersionActual];
+    self.numeroDeVersiones = self.versionActual;
     [self.versiones addObject:celdas];
     self.numeroDeVersiones = self.numeroDeVersiones+1;
     self.versionActual = self.numeroDeVersiones;
@@ -63,9 +86,9 @@
 -(NSArray *) versionAnterior {
     if (self.versionActual > 0){
         self.versionActual = self.versionActual-1;
-        return [self.versiones objectAtIndex:self.versionActual+1];
-    } else
         return [self.versiones objectAtIndex:self.versionActual];
+    } else
+        return nil;
     
 }
 
@@ -73,7 +96,33 @@
     if(self.versionActual < self.numeroDeVersiones){
         self.versionActual = self.versionActual+1;}
     
-    return [self.versiones objectAtIndex:self.versionActual];
+    if (self.numeroDeVersiones>0)
+        {
+        return [self.versiones objectAtIndex:self.versionActual-1];
+        }
+    else
+        {
+        return nil;
+        }
+}
+
+- (NSArray *)todasLasVersiones{
+    return _versiones;
+}
+
+#pragma mark - Propios - privados
+
+- (NSString *) pathDelArchivoConHistorialDeCambios{
+    NSString * directorio = @"/Users/IRG/Desktop/Dibujos de Iago";
+    return [directorio stringByAppendingPathComponent:self.nombreDelArchivo];
+}
+
+- (void) eliminaVersionesDesdeLaVersionActual{
+    int  versionesAEliminar = self.numeroDeVersiones - self.versionActual;
+    
+    for (int i = 0;i<versionesAEliminar;i++){
+        [self.versiones removeLastObject];
+    }
 }
 
 @end

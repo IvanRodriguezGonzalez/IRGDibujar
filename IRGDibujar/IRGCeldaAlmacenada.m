@@ -38,4 +38,33 @@
 }
 
 
+- (void) encodeWithCoder:(NSCoder *)aCoder{
+    
+    [aCoder encodeInteger:self.numeroDeCelda forKey:@"numeroDeCelda"];
+    [aCoder encodeObject:self.colorDelRellenoNuevo forKey:@"colorDelRellenoNuevo"];
+    [aCoder encodeObject:self.colorDelTrazoNuevo forKey:@"colorDelTrazoNuevo"];
+    [aCoder encodeInteger:self.grosorDelTrazoNuevo forKey:@"grosorDelTrazoNuevo"];
+    [aCoder encodeObject:self.colorDelRellenoAntiguo forKey:@"colorDelRellenoAntiguo"];
+    [aCoder encodeObject:self.colorDelTrazoAntiguo forKey:@"colorDelTrazoAntiguo"];
+    [aCoder encodeInteger:self.grosorDelTrazoAntiguo forKey:@"grosorDelTrazoAntiguo"];
+    
+}
+
+
+
+- (instancetype) initWithCoder: (NSCoder *)aDecoder {
+    self = [super init];
+    if (self){
+        _numeroDeCelda = [aDecoder decodeIntegerForKey:@"numeroDeCelda"];
+        _colorDelRellenoNuevo = [aDecoder decodeObjectForKey:@"colorDelRellenoNuevo"];
+        _colorDelTrazoNuevo = [aDecoder decodeObjectForKey:@"colorDelTrazoNuevo"];
+        _grosorDelTrazoNuevo = [aDecoder decodeIntegerForKey:@"grosorDelTrazoNuevo"];
+        _colorDelRellenoAntiguo = [aDecoder decodeObjectForKey:@"colorDelRellenoAntiguo"];
+        _colorDelTrazoAntiguo = [aDecoder decodeObjectForKey:@"colorDelTrazoAntiguo"];
+        _grosorDelTrazoAntiguo = [aDecoder decodeIntegerForKey:@"grosorDelTrazoAntiguo"];
+        
+    }
+    return self;
+}
+
 @end

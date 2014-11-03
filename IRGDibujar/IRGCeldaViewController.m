@@ -93,67 +93,40 @@
             [self celdaPulsadaConModoRellenarNormal];
           }
         else {
-            [self celdaPulsadaConModoRellenarExtendido];
+            if ([[IRGPincel sharedPincel].modoPincel isEqual:@"Borrar"]){
+                [self celdaPulsadaConModoBorrar];
+                
+            }
+            else {
+                [self celdaPulsadaConModoRellenarExtendido];
+            }
         }
     }
     [[IRGAlmacenDeCambios sharedAlmacenDeCambios] nuevaVersionConCeldas:self.conjuntoDeCeldasPintadas];
+    [[IRGAlmacenDeCambios sharedAlmacenDeCambios] grabarCambios];
+}
+
+
+- (void) celdaPulsadaConModoBorrar{
+    
 }
 
 
 - (void) celdaPulsadaConModoPintar{
 
-    UIColor * colorDeTrazoDelPincel = [IRGPincel sharedPincel].colorDeTrazoDelPincel;
-    UIColor * colorDeRellenoDelPincel = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
-    NSUInteger grosorDelTrazoDelPincel = [IRGPincel sharedPincel].grosorDelTrazoDelPincel;
-    
-    UIColor * colorDeTrazoAntiguo = self.colorDelTrazoDeLaCelda;
-    UIColor * colorDeRellenoAntguo =  self.colorDelRellenoDeLaCelda;
-    NSUInteger grosorDelTrazoAntiguo = self.grosorDelTrazoDeLaCelda;
-    
-    IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
-                                        initWithCeldaAlmacenada:self.numeroDeCelda
-                                        colorDelRellenoAntiguo:colorDeRellenoAntguo
-                                        colorDelRellenoNuevo:colorDeRellenoDelPincel
-                                        colorDelTrazoAntiguo:colorDeTrazoAntiguo
-                                        colorDelTrazoNuevo:colorDeTrazoDelPincel
-                                        grosorDelTrazoAntiguo:grosorDelTrazoAntiguo
-                                        grosorDelTrazoNuevo:grosorDelTrazoDelPincel];
-                                        
-    [self dibujaCeldaConPincel];
-    [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
-    
+    [self pintarYGuardarCeldaDelViewController:self];
 }
 
 
 - (void) celdaPulsadaConModoRellenarExtendido{
     
     NSArray *todosLosViewControllerDeLasCeldas =[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems];
-    
     UIColor *colorCeldaElegida = self.colorDelRellenoDeLaCelda;
     
     for (IRGCeldaViewController *celdaViewController in todosLosViewControllerDeLasCeldas ){
         if ([celdaViewController.colorDelRellenoDeLaCelda isEqual: colorCeldaElegida]){
             
-            UIColor * colorDeTrazoDelPincel = [IRGPincel sharedPincel].colorDeTrazoDelPincel;
-            UIColor * colorDeRellenoDelPincel = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
-            NSUInteger grosorDelTrazoDelPincel = [IRGPincel sharedPincel].grosorDelTrazoDelPincel;
-            
-            UIColor * colorDeTrazoAntiguo = celdaViewController.colorDelTrazoDeLaCelda;
-            UIColor * colorDeRellenoAntguo =  celdaViewController.colorDelRellenoDeLaCelda;
-            NSUInteger grosorDelTrazoAntiguo = celdaViewController.grosorDelTrazoDeLaCelda;
-            
-            
-            IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
-                                                initWithCeldaAlmacenada:celdaViewController.numeroDeCelda
-                                                colorDelRellenoAntiguo:colorDeRellenoAntguo
-                                                colorDelRellenoNuevo:colorDeRellenoDelPincel
-                                                colorDelTrazoAntiguo:colorDeTrazoAntiguo
-                                                colorDelTrazoNuevo:colorDeTrazoDelPincel
-                                                grosorDelTrazoAntiguo:grosorDelTrazoAntiguo
-                                                grosorDelTrazoNuevo:grosorDelTrazoDelPincel];
-           
-            [celdaViewController dibujaCeldaConPincel];
-            [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+            [self pintarYGuardarCeldaDelViewController:celdaViewController];
         }
     }
 }
@@ -166,8 +139,6 @@
         [self colorearNormalCeldaViewController:self
                           conColorAntiguo:colorAntiguo];
     };
-    
-    
 }
 
 
@@ -177,26 +148,7 @@
     
     if ([celdaViewController.colorDelRellenoDeLaCelda isEqual:colorAntiguo]){
         
-        UIColor * colorDeTrazoDelPincel = [IRGPincel sharedPincel].colorDeTrazoDelPincel;
-        UIColor * colorDeRellenoDelPincel = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
-        NSUInteger grosorDelTrazoDelPincel = [IRGPincel sharedPincel].grosorDelTrazoDelPincel;
-        
-        UIColor * colorDeTrazoAntiguo = celdaViewController.colorDelTrazoDeLaCelda;
-        UIColor * colorDeRellenoAntguo =  celdaViewController.colorDelRellenoDeLaCelda;
-        NSUInteger grosorDelTrazoAntiguo = celdaViewController.grosorDelTrazoDeLaCelda;
-        
-        
-        IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
-                                            initWithCeldaAlmacenada:celdaViewController.numeroDeCelda
-                                            colorDelRellenoAntiguo:colorDeRellenoAntguo
-                                            colorDelRellenoNuevo:colorDeRellenoDelPincel
-                                            colorDelTrazoAntiguo:colorDeTrazoAntiguo
-                                            colorDelTrazoNuevo:colorDeTrazoDelPincel
-                                            grosorDelTrazoAntiguo:grosorDelTrazoAntiguo
-                                            grosorDelTrazoNuevo:grosorDelTrazoDelPincel];
-        
-        [celdaViewController dibujaCeldaConPincel];
-        [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+        [self pintarYGuardarCeldaDelViewController:celdaViewController];
         
         IRGCeldaViewController *siguienteCeldaEnLaFila = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] siguienteCeldaEnLaFila:celdaViewController];
         if (siguienteCeldaEnLaFila){
@@ -220,6 +172,29 @@
     }
 }
 
+-(void) pintarYGuardarCeldaDelViewController:(IRGCeldaViewController *) celdaViewController{
+    
+    UIColor * colorDeTrazoDelPincel = [IRGPincel sharedPincel].colorDeTrazoDelPincel;
+    UIColor * colorDeRellenoDelPincel = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+    NSUInteger grosorDelTrazoDelPincel = [IRGPincel sharedPincel].grosorDelTrazoDelPincel;
+    
+    UIColor * colorDeTrazoAntiguo = celdaViewController.colorDelTrazoDeLaCelda;
+    UIColor * colorDeRellenoAntguo =  celdaViewController.colorDelRellenoDeLaCelda;
+    NSUInteger grosorDelTrazoAntiguo = celdaViewController.grosorDelTrazoDeLaCelda;
+    
+    
+    IRGCeldaAlmacenada * celdaPintada =[[IRGCeldaAlmacenada alloc]
+                                        initWithCeldaAlmacenada:celdaViewController.numeroDeCelda
+                                        colorDelRellenoAntiguo:colorDeRellenoAntguo
+                                        colorDelRellenoNuevo:colorDeRellenoDelPincel
+                                        colorDelTrazoAntiguo:colorDeTrazoAntiguo
+                                        colorDelTrazoNuevo:colorDeTrazoDelPincel
+                                        grosorDelTrazoAntiguo:grosorDelTrazoAntiguo
+                                        grosorDelTrazoNuevo:grosorDelTrazoDelPincel];
+    
+    [celdaViewController dibujaCeldaConPincel];
+    [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -253,6 +228,31 @@
     self.grosorDelTrazoDeLaCelda = [IRGPincel sharedPincel].grosorDelTrazoDelPincel;
 }
 
+
+- (void) dibujarCeldaConCeldaAlmacenadaConVersionAntigua:(IRGCeldaAlmacenada *)celdaAlmacenada
+{
+    self.colorDelRellenoDeLaCelda = celdaAlmacenada.colorDelRellenoAntiguo;
+    self.colorDelTrazoDeLaCelda = celdaAlmacenada.colorDelTrazoAntiguo;
+    self.grosorDelTrazoDeLaCelda = celdaAlmacenada.grosorDelTrazoAntiguo;
+    [self dibujarCeldaConViewController];
+}
+
+- (void) dibujarCeldaConCeldaAlmacenadaConVersionNueva:(IRGCeldaAlmacenada *)celdaAlmacenada
+{
+    self.colorDelRellenoDeLaCelda = celdaAlmacenada.colorDelRellenoNuevo;
+    self.colorDelTrazoDeLaCelda = celdaAlmacenada.colorDelTrazoNuevo;
+    self.grosorDelTrazoDeLaCelda = celdaAlmacenada.grosorDelTrazoNuevo;
+    [self dibujarCeldaConViewController];
+}
+
+- (void) borrarCelda
+{
+    self.colorDelTrazoDeLaCelda = [IRGLienzo sharedLienzo].colorDelTrazoDeLaCeldaSinPintar;
+    self.grosorDelTrazoDeLaCelda = [IRGLienzo sharedLienzo].grosoDelTrazoDeLaCeldaSinPintar;
+    self.colorDelRellenoDeLaCelda = [IRGLienzo sharedLienzo].colorDelRellenoDeLaCeldaSinPintar;
+    [self dibujarCeldaConViewController];
+}
+
 - (void) dibujarCeldaConViewController {
     
     self.celda.colorDelBorde = self.colorDelTrazoDeLaCelda;
@@ -260,6 +260,8 @@
     self.celda.backgroundColor = self.colorDelRellenoDeLaCelda;
     [self.celda setNeedsDisplay];
 }
+
+
 
 - (void) actualizarViewControllerYDibujaCeldaConColorDelTrazoDeLaCelda:(UIColor *) colorDelTrazoDeLaCelda
                                               colorDelRellenoDeLaCelda:(UIColor *) colorDelRellenoDeLaCelda

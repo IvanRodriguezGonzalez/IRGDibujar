@@ -37,8 +37,8 @@
 }
 
 - (void) establecerPincelPorDefecto{
-    self.colorDeTrazoDelPincel = [UIColor blackColor];
-    self.colorDeRellenoDelPincel = [UIColor grayColor];
+    self.colorDeTrazoDelPincel = [UIColor lightGrayColor];
+    self.colorDeRellenoDelPincel = [UIColor blackColor];
     self.grosorDelTrazoDelPincel = 1;
     self.modoPincel = @"Pintar";
 }

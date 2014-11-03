@@ -10,6 +10,7 @@
 #import "IRGCeldaViewController.h"
 
 @interface IRGAlmacenDeCambios : NSObject
+
 @property (nonatomic) int numeroDeVersiones;
 @property (nonatomic) int versionActual;
 
@@ -23,5 +24,9 @@
 -(NSArray *) versionAnterior;
 
 -(NSArray *) versionSiguiente;
+
+- (NSArray *)todasLasVersiones;
+
+-(bool) grabarCambios;
 
 @end

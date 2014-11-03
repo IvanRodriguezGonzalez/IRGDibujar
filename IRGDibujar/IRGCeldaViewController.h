@@ -38,4 +38,10 @@
                                               colorDelRellenoDeLaCelda:(UIColor *) colorDelRellenoDeLaCelda
                                               grosorDelPincelDeLaCElda:(NSUInteger) grosorDelPincelDeLaCelda;
 
+- (void) dibujaCeldaConPincel;
+- (void) dibujarCeldaConCeldaAlmacenadaConVersionAntigua:(IRGCeldaAlmacenada *)celdaAlmacenada;
+- (void) dibujarCeldaConCeldaAlmacenadaConVersionNueva:(IRGCeldaAlmacenada *)celdaAlmacenada;
+- (void) borrarCelda;
+
+
 @end

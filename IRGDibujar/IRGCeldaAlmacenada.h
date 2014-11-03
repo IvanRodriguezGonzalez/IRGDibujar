@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import<UIKit/UIKit.h>
 
-@interface IRGCeldaAlmacenada : NSObject
+@interface IRGCeldaAlmacenada : NSObject <NSCoding>
 
 @property (nonatomic) NSUInteger numeroDeCelda;
 @property (nonatomic) UIColor *colorDelRellenoAntiguo;
