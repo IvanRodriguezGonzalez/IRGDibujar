@@ -31,7 +31,6 @@
 
 
 
-- (BOOL)esIgual:(IRGCeldaAlmacenada *)celdaViewController;
 
 
 - (void) actualizarViewControllerYDibujaCeldaConColorDelTrazoDeLaCelda:(UIColor *) colorDelTrazoDeLaCelda
