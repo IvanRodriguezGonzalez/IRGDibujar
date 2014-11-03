@@ -87,6 +87,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3259F3801A07BB2E00652664 /* Protocolos */ = {
+			isa = PBXGroup;
+			children = (
+				32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */,
+			);
+			name = Protocolos;
+			sourceTree = "<group>";
+		};
+		3259F3811A07BB5A00652664 /* Cabeceras */ = {
+			isa = PBXGroup;
+			children = (
+				32AB333619FD866000441D7A /* AppDelegate.h */,
+				32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */,
+				32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */,
+				328FC6AC1A02D4A300D36FF0 /* IRGMainNavigationViewController.h */,
+			);
+			name = Cabeceras;
+			sourceTree = "<group>";
+		};
+		3259F3821A07BB7E00652664 /* Implementacion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Implementacion;
+			sourceTree = "<group>";
+		};
 		32AB332619FD866000441D7A = {
 			isa = PBXGroup;
 			children = (
@@ -175,14 +201,12 @@
 		32AB336919FD8A3900441D7A /* Controlador */ = {
 			isa = PBXGroup;
 			children = (
-				32AB333619FD866000441D7A /* AppDelegate.h */,
+				3259F3801A07BB2E00652664 /* Protocolos */,
+				3259F3811A07BB5A00652664 /* Cabeceras */,
+				3259F3821A07BB7E00652664 /* Implementacion */,
 				32AB333719FD866000441D7A /* AppDelegate.m */,
-				32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */,
 				32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */,
-				32AB337819FDA20800441D7A /* IRGCeldaProtocol.h */,
-				32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */,
 				32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */,
-				328FC6AC1A02D4A300D36FF0 /* IRGMainNavigationViewController.h */,
 				328FC6AD1A02D4A300D36FF0 /* IRGMainNavigationViewController.m */,
 			);
 			name = Controlador;

@@ -41,7 +41,7 @@
 - (void) dibujaCeldaConPincel;
 - (void) dibujarCeldaConCeldaAlmacenadaConVersionAntigua:(IRGCeldaAlmacenada *)celdaAlmacenada;
 - (void) dibujarCeldaConCeldaAlmacenadaConVersionNueva:(IRGCeldaAlmacenada *)celdaAlmacenada;
-- (void) borrarCelda;
+- (void) borrarYGuardarCeldaDelViewController:(IRGCeldaViewController *) celdaViewController;
 
 
 @end

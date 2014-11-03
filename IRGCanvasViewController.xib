@@ -136,7 +136,7 @@
                                 <action selector="establecerColor:" destination="-1" eventType="touchUpInside" id="Xhp-gh-WUA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoH-3a-LcY">
+                        <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoH-3a-LcY">
                             <rect key="frame" x="428" y="8" width="16" height="16"/>
                             <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -178,7 +178,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="YGl-4J-zKc" secondAttribute="height" multiplier="1:1" id="E39-x5-Hvo"/>
                             </constraints>
-                            <state key="normal" image="botonAzul">
+                            <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -449,6 +449,5 @@
         <image name="Image" width="100" height="98"/>
         <image name="Rellenar" width="256" height="256"/>
         <image name="RellenarExtendido" width="256" height="256"/>
-        <image name="botonAzul" width="58" height="60"/>
     </resources>
 </document>

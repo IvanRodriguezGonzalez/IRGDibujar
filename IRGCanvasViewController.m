@@ -96,20 +96,16 @@
                                                            alto:alto];
         [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] añadirCelda:celdaViewController];
         [self.view addSubview:celdaViewController.view];
-        }}
-    
-    NSArray *todasLasCeldas = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas]allItems];
-    for (NSArray *versionAProcesar in [[IRGAlmacenDeCambios sharedAlmacenDeCambios]todasLasVersiones]){
-        for (IRGCeldaAlmacenada *celdaAlmacenadaAProcesar in versionAProcesar)
-        {
-            [todasLasCeldas[celdaAlmacenadaAProcesar.numeroDeCelda] dibujarCeldaConCeldaAlmacenadaConVersionNueva:celdaAlmacenadaAProcesar];
         }
     }
-    [[IRGAlmacenDeCambios sharedAlmacenDeCambios] setVersionActual:[[IRGAlmacenDeCambios sharedAlmacenDeCambios] numeroDeVersiones]];
+    [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] setNumeroDeColumnas:numeroDeCeldasEnCadaFila];
+    [self refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones];
+ 
 
     
-    [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] setNumeroDeColumnas:numeroDeCeldasEnCadaFila];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -157,7 +153,7 @@
 - (IBAction)avanzarVersion:(UIButton *)sender {
     
     NSArray * celdasCambiadasEnEstaVersion = [[IRGAlmacenDeCambios sharedAlmacenDeCambios] versionSiguiente];
-    if (celdasCambiadasEnEstaVersion != [NSNull null]){
+    if (celdasCambiadasEnEstaVersion){
         [self refrescarCanvasConCeldasCambiadas:celdasCambiadasEnEstaVersion
                              usarVersionAntigua:false];
     }
@@ -172,11 +168,18 @@
 
 #pragma mark - Propios
 
+- (void) refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones
+{
+    for (NSArray *versionAProcesar in [[IRGAlmacenDeCambios sharedAlmacenDeCambios]todasLasVersiones]){
+        [self refrescarCanvasConCeldasCambiadas:versionAProcesar usarVersionAntigua:NO];
+    }
+    [[IRGAlmacenDeCambios sharedAlmacenDeCambios] setVersionActual:[[IRGAlmacenDeCambios sharedAlmacenDeCambios] numeroDeVersiones]];
+}
+
 - (void) refrescarCanvasConCeldasCambiadas:(NSArray *)celdasCambiadasEnEstaVersion
                         usarVersionAntigua:(bool) usarVersionAntigua{
     
     NSArray * todasLasCeldas = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems];
-    
     IRGCeldaViewController * celdaViewController;
     
     for (IRGCeldaAlmacenada * celdaAlmacenada in celdasCambiadasEnEstaVersion){
