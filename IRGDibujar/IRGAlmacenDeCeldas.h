@@ -14,6 +14,8 @@
 
 + (instancetype) sharedAlmacenDeCeldas;
 
+
+- (void) borrarAlmacen;
 - (void) añadirCelda: (IRGCeldaViewController *)celda;
 
 - (bool) hayCeldasEnLaFla:(NSUInteger) numeroDeFila

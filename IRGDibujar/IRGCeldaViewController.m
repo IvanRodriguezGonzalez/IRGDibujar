@@ -44,11 +44,14 @@
                     numeroDeCelda:(NSUInteger)numeroDeCelda
                             ancho:(NSUInteger)ancho
                              alto:(NSUInteger)alto{
-    _posicionX = posicionX;
-    _posicionY = posicionY;
-    _numeroDeCelda = numeroDeCelda;
-    _alto = alto;
-    _ancho = ancho;
+    self = [super initWithNibName:nil bundle:nil];
+    if (self){
+        _posicionX = posicionX;
+        _posicionY = posicionY;
+        _numeroDeCelda = numeroDeCelda;
+        _alto = alto;
+        _ancho = ancho;
+    }
     return self;
 }
 
@@ -58,15 +61,24 @@
     [super viewDidLoad];
     
     CGRect frame = CGRectMake(self.posicionX, self.posicionY, self.ancho , self.alto);
+    UIColor *colorDelTrazo;
+    NSUInteger grosorDelTrazo;
     
-    UIColor *colorDelTrazo = [IRGLienzo sharedLienzo].colorDelTrazoDeLaCeldaSinPintar;
+    if ([IRGLienzo sharedLienzo].dibujarBorderDeLaCelda){
+        colorDelTrazo = [IRGLienzo sharedLienzo].colorDelTrazoDeLaCeldaSinPintar;
+        grosorDelTrazo= [IRGLienzo sharedLienzo].grosoDelTrazoDeLaCeldaSinPintar;
+    }
+    else{
+        colorDelTrazo = [UIColor clearColor];
+        grosorDelTrazo = 0;
+    }
+
     UIColor *colorDeRelleno = [IRGLienzo sharedLienzo].colorDelRellenoDeLaCeldaSinPintar;
-    NSUInteger grosordelTrazo = [IRGLienzo sharedLienzo].grosoDelTrazoDeLaCeldaSinPintar;
     
     
     IRGCelda *celdaView = [[IRGCelda alloc]
                            initWithFrame:frame colorDelBorde:colorDelTrazo
-                           grosorDelTrazo:grosordelTrazo];
+                           grosorDelTrazo:grosorDelTrazo];
     
     celdaView.backgroundColor = colorDeRelleno;
     celdaView.delegado = self;
@@ -74,7 +86,7 @@
     self.view = celdaView;
     self.colorDelTrazoDeLaCelda = colorDelTrazo;;
     self.colorDelRellenoDeLaCelda = colorDeRelleno;
-    self.grosorDelTrazoDeLaCelda = grosordelTrazo;
+    self.grosorDelTrazoDeLaCelda = grosorDelTrazo;
     _celda = celdaView;
 }
 
@@ -91,7 +103,7 @@
           }
         else {
             if ([[IRGPincel sharedPincel].modoPincel isEqual:@"Borrar"]){
-                [self celdaPulsadaConModoBorrar];
+                [self celdaPulsadaConModoPintar];
                 
             }
             else {
@@ -104,9 +116,12 @@
 }
 
 
+<<<<<<< HEAD
 - (void) celdaPulsadaConModoBorrar{
     [self borrarYGuardarCeldaDelViewController:self];
 }
+=======
+>>>>>>> FETCH_HEAD
 
 
 - (void) celdaPulsadaConModoPintar{
@@ -267,9 +282,14 @@
 }
 
 - (void) dibujarCeldaConViewController {
-    
-    self.celda.colorDelBorde = self.colorDelTrazoDeLaCelda;
-    self.celda.grosorDelTrazoDeLaCelda = self.grosorDelTrazoDeLaCelda;
+    if ([IRGLienzo sharedLienzo].dibujarBorderDeLaCelda){
+        self.celda.colorDelBorde = self.colorDelTrazoDeLaCelda;
+        self.celda.grosorDelTrazoDeLaCelda = self.grosorDelTrazoDeLaCelda;
+    }
+    else {
+        self.celda.colorDelBorde = self.colorDelTrazoDeLaCelda;
+        self.celda.grosorDelTrazoDeLaCelda = 0;
+    }
     self.celda.backgroundColor = self.colorDelRellenoDeLaCelda;
     [self.celda setNeedsDisplay];
 }

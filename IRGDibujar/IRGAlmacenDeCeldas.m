@@ -29,17 +29,21 @@
 
 + (instancetype) sharedAlmacenDeCeldas{
     
-    static IRGAlmacenDeCeldas *_almaceDeCeldas;
-    if(!_almaceDeCeldas){
-        _almaceDeCeldas = [[IRGAlmacenDeCeldas alloc]initPrivado];
+    static IRGAlmacenDeCeldas *_almacenDeCeldas;
+    if(!_almacenDeCeldas){
+        _almacenDeCeldas = [[IRGAlmacenDeCeldas alloc]initPrivado];
         
     }
-    return _almaceDeCeldas;
+    return _almacenDeCeldas;
 }
 
 -(instancetype) initPrivado{
     self = [super init];
     return self;
+}
+
+- (void) borrarAlmacen{
+    self.almacenDeCeldasPrivado = [[NSMutableArray alloc]init];
 }
 
 - (void) añadirCelda: (IRGCeldaViewController *)celdaViewController{

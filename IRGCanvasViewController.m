@@ -13,6 +13,7 @@
 #import "IRGAlmacenDeCambios.h"
 #import "IRGCeldaAlmacenada.h"
 #import "IRGPincel.h"
+#import "IRGLienzo.h"
 
 
 
@@ -20,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *barraDeIconos;
 @property (weak, nonatomic) IBOutlet UIView *colorElegido;
+@property (weak, nonatomic) IBOutlet UIView *canvas;
 
 - (IBAction)accionRellenar:(UIButton *)sender;
 - (IBAction)accionRellenarExtendido:(UIButton *)sender;
@@ -29,6 +31,8 @@
 - (IBAction)accionBorrar:(UIButton *)sender;
 
 - (IBAction)establecerColor:(UIButton *)sender;
+- (IBAction)reducirCanvas:(UIButton *)sender;
+- (IBAction)ampliarCanvas:(UIButton *)sender;
 @end
 
 @implementation IRGCanvasViewController
@@ -65,44 +69,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    self.view.frame = [[UIApplication sharedApplication] keyWindow].frame;
-    
-    NSUInteger posicionX;
-    NSUInteger posicionY =  70;
-    NSUInteger ancho =30;
-    NSUInteger alto =30;
-    
-    NSUInteger numeroDeCelda;
-    NSUInteger altoBarraDeIconos = self.barraDeIconos.frame.size.height;
-    NSUInteger anchoDeLaVentana = self.view.frame.size.width;
-    
-    
-    NSUInteger numeroDeCeldasEnCadaFila = (anchoDeLaVentana) / ancho;
-    NSUInteger bordeHorizontal = anchoDeLaVentana - numeroDeCeldasEnCadaFila*ancho;
-    
-    posicionX = bordeHorizontal/2;
-    
-    
-    for (NSUInteger coordenadaY = posicionY+altoBarraDeIconos;coordenadaY+alto<=self.view.frame.size.height;coordenadaY+= alto){
-        for (NSUInteger coordenadax = posicionX;coordenadax+ancho<=anchoDeLaVentana;coordenadax += ancho){
-                
-            numeroDeCelda = [[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems] count];
-            
-            IRGCeldaViewController *celdaViewController = [[IRGCeldaViewController alloc]
-                                                           initWithPosicionX:coordenadax
-                                                           posicionY:coordenadaY
-                                                           numeroDeCelda:numeroDeCelda
-                                                           ancho:ancho
-                                                           alto:alto];
-        [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] añadirCelda:celdaViewController];
-        [self.view addSubview:celdaViewController.view];
-        }
-    }
-    [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] setNumeroDeColumnas:numeroDeCeldasEnCadaFila];
+    [self crearAlmacenNuevo];
+    [self dibujarCeldasDelLienzo];
     [self refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones];
- 
-
-    
 }
 
 
@@ -126,19 +95,39 @@
     self.colorElegido.backgroundColor = sender.backgroundColor;
 }
 
+
+- (IBAction)reducirCanvas:(UIButton *)sender {
+    [IRGLienzo sharedLienzo].altoCelda = [IRGLienzo sharedLienzo].altoCelda-1;
+    [IRGLienzo sharedLienzo].anchoCelda = [IRGLienzo sharedLienzo].anchoCelda-1;
+    [self crearAlmacenNuevo];
+    [self dibujarCeldasDelLienzo];
+    [self refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones];
+}
+
+- (IBAction)ampliarCanvas:(UIButton *)sender {
+    [IRGLienzo sharedLienzo].altoCelda = [IRGLienzo sharedLienzo].altoCelda+1;
+    [IRGLienzo sharedLienzo].anchoCelda = [IRGLienzo sharedLienzo].anchoCelda+1;
+    [self crearAlmacenNuevo];
+    [self dibujarCeldasDelLienzo];
+    [self refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones];
+}
+
 - (IBAction)accionRellenar:(id)sender {
     [IRGPincel sharedPincel].modoPincel = @"RellenarNormal";
     self.navigationItem.title = @"Rellenar";
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
 }
 
 - (IBAction)accionRellenarExtendido:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"RellenarExtendido";
     self.navigationItem.title = @"Rellenar extendido";
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
 }
 
 - (IBAction)accionPintar:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"Pintar";
     self.navigationItem.title = @"Pintar";
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
 }
 
 - (IBAction)retrocederVersion:(id)sender {
@@ -167,6 +156,56 @@
 
 
 #pragma mark - Propios
+
+- (void) crearAlmacenNuevo{
+    
+    [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] borrarAlmacen];
+    NSUInteger anchoDeLaCelda =[IRGLienzo sharedLienzo].anchoCelda;
+    NSUInteger altoDeLaCelda = [IRGLienzo sharedLienzo].altoCelda;
+    NSUInteger numeroDeFilas = [IRGLienzo sharedLienzo].filasDelLienzo;
+    NSUInteger numeroDeColumnas  = [IRGLienzo sharedLienzo].columnasDelLienzo;
+    
+    NSUInteger numeroDeCelda;
+    NSUInteger coordenadaX;
+    NSUInteger coordenadaY;
+    
+    for (NSUInteger fila= 0; fila < numeroDeFilas;fila++){
+        for (NSUInteger columna = 0 ;columna < numeroDeColumnas;columna++){
+            
+            coordenadaX = columna*anchoDeLaCelda;
+            coordenadaY = fila*altoDeLaCelda;
+            
+            numeroDeCelda = [[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] allItems] count];
+            
+            IRGCeldaViewController *celdaViewController = [[IRGCeldaViewController alloc]
+                                                           initWithPosicionX:coordenadaX
+                                                           posicionY:coordenadaY
+                                                           numeroDeCelda:numeroDeCelda
+                                                           ancho:anchoDeLaCelda
+                                                           alto:altoDeLaCelda];
+            [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] añadirCelda:celdaViewController];
+        }
+    }
+    [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] setNumeroDeColumnas:numeroDeColumnas];
+}
+
+
+- (void) dibujarCeldasDelLienzo{
+    [self borrarCeldasDelLienzo];
+    for (IRGCeldaViewController * celdaViewController in [IRGAlmacenDeCeldas sharedAlmacenDeCeldas].allItems){
+        [self.canvas addSubview:celdaViewController.view];
+    }
+    self.navigationItem.title = [NSString stringWithFormat:@"%lu",(unsigned long)[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas].allItems count]];
+}
+
+- (void) borrarCeldasDelLienzo{
+    
+    for(UIView *subview in self.canvas.subviews) {
+        if (subview.class == [IRGCelda class]){
+            [subview removeFromSuperview];
+        }
+    }
+}
 
 - (void) refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones
 {

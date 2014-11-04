@@ -8,6 +8,13 @@
 
 #import "IRGLienzo.h"
 
+# define ALTO_DE_LA_CELDA 10
+# define ANCHO_DE_LA_CELDA 10
+# define FILAS_DEL_LIENZO 40
+# define COLUMNAS_DEL_LIENZO 40
+# define TAMANO_MINIMO_PARA_PINTAR_BORDE 15
+
+
 @implementation IRGLienzo
 
 
@@ -34,11 +41,52 @@
     return self;
 }
 
+#pragma mark - Accesors
+
 - (void) establecerCeldaSinPintarPorDefecto {
-    
     self.colorDelTrazoDeLaCeldaSinPintar = [UIColor lightGrayColor];
     self.colorDelRellenoDeLaCeldaSinPintar = [UIColor whiteColor];
     self.grosoDelTrazoDeLaCeldaSinPintar = 1;
+}
+
+
+-(NSInteger) filasDelLienzo {
+    if (_filasDelLienzo == 0) {
+        _filasDelLienzo = FILAS_DEL_LIENZO;
+    }
+    return  _filasDelLienzo;
+}
+
+-(NSInteger) columnasDelLienzo {
+    if (_columnasDelLienzo ==0) {
+        _columnasDelLienzo = COLUMNAS_DEL_LIENZO;
+    }
+    return _columnasDelLienzo;
+}
+
+-(NSInteger) anchoCelda{
+    if (_anchoCelda == 0) {
+        _anchoCelda = ANCHO_DE_LA_CELDA;
+    }
+    return _anchoCelda;
+}
+
+-(NSInteger) altoCelda{
+    if (_altoCelda==0) {
+        _altoCelda = ALTO_DE_LA_CELDA;
+    }
+    return _altoCelda;
+}
+
+#pragma mark - Propios Publicos
+
+-(bool) dibujarBorderDeLaCelda{
+    if ((self.altoCelda>TAMANO_MINIMO_PARA_PINTAR_BORDE) & (self.anchoCelda>TAMANO_MINIMO_PARA_PINTAR_BORDE)){
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
 }
 
 @end

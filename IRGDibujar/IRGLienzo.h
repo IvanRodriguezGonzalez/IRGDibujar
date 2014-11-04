@@ -11,10 +11,17 @@
 
 @interface IRGLienzo : NSObject
 
+@property (nonatomic) NSInteger filasDelLienzo;
+@property (nonatomic) NSInteger columnasDelLienzo;
+@property (nonatomic) NSInteger altoCelda;
+@property (nonatomic) NSInteger anchoCelda;
+
 @property (nonatomic) UIColor *colorDelTrazoDeLaCeldaSinPintar;
 @property (nonatomic) UIColor *colorDelRellenoDeLaCeldaSinPintar;
 @property (nonatomic) NSUInteger grosoDelTrazoDeLaCeldaSinPintar;
 
 + (instancetype) sharedLienzo;
+
+-(bool) dibujarBorderDeLaCelda;
 
 @end
