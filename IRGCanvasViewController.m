@@ -133,16 +133,19 @@
 - (IBAction)accionRellenar:(id)sender {
     [IRGPincel sharedPincel].modoPincel = @"RellenarNormal";
     self.navigationItem.title = @"Rellenar";
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
 }
 
 - (IBAction)accionRellenarExtendido:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"RellenarExtendido";
     self.navigationItem.title = @"Rellenar extendido";
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
 }
 
 - (IBAction)accionPintar:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"Pintar";
     self.navigationItem.title = @"Pintar";
+    [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
 }
 
 - (IBAction)retrocederVersion:(id)sender {
@@ -157,7 +160,7 @@
 - (IBAction)avanzarVersion:(UIButton *)sender {
     
     NSArray * celdasCambiadasEnEstaVersion = [[IRGAlmacenDeCambios sharedAlmacenDeCambios] versionSiguiente];
-    if (celdasCambiadasEnEstaVersion != [NSNull null]){
+    if (celdasCambiadasEnEstaVersion){
         [self refrescarCanvasConCeldasCambiadas:celdasCambiadasEnEstaVersion
                              usarVersionAntigua:false];
     }

@@ -7,11 +7,11 @@
 //
 
 #import "IRGPincel.h"
+#import "IRGLienzo.h"
 
 @implementation IRGPincel
 
 #pragma mark - Inicializadores
-
 
 -(instancetype) init {
     [NSException exceptionWithName:@"Invalid init" reason:@"Use [IRGPincel sharedPincel]" userInfo:nil];
@@ -40,7 +40,18 @@
     self.colorDeTrazoDelPincel = [UIColor lightGrayColor];
     self.colorDeRellenoDelPincel = [UIColor blackColor];
     self.grosorDelTrazoDelPincel = 1;
-    self.modoPincel = @"Pintar";
+    _modoPincel = @"Pintar";
+}
+
+#pragma mark - Accesosr
+
+-(void) setModoPincel:(NSString *)modoPincel{
+    _modoPincel = modoPincel;
+    if ([modoPincel isEqualToString:@"Borrar"]){
+        self.colorDeTrazoDelPincel = [IRGLienzo sharedLienzo].colorDelTrazoDeLaCeldaSinPintar ;
+        self.colorDeRellenoDelPincel = [IRGLienzo sharedLienzo].colorDelRellenoDeLaCeldaSinPintar;
+        self.grosorDelTrazoDelPincel = [IRGPincel sharedPincel].grosorDelTrazoDelPincel;
+    }
 }
 
 @end

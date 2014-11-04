@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IRGDibujar/IRGCeldaViewController.m"
-            timestampString = "436563415.452424"
+            filePath = "IRGCanvasViewController.m"
+            timestampString = "436786427.420669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-celdaPulsadaConModoRellenarExtendido"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-accionBorrar:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IRGDibujar/IRGCeldaViewController.m"
+            timestampString = "436786525.5431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-colorearNormalCeldaViewController:conColorAntiguo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

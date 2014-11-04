@@ -94,7 +94,7 @@
           }
         else {
             if ([[IRGPincel sharedPincel].modoPincel isEqual:@"Borrar"]){
-                [self celdaPulsadaConModoBorrar];
+                [self celdaPulsadaConModoPintar];
                 
             }
             else {
@@ -107,9 +107,6 @@
 }
 
 
-- (void) celdaPulsadaConModoBorrar{
-    
-}
 
 
 - (void) celdaPulsadaConModoPintar{
