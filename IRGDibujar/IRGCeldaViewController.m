@@ -117,9 +117,12 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - (void) celdaPulsadaConModoBorrar{
     [self borrarYGuardarCeldaDelViewController:self];
 }
+=======
+>>>>>>> FETCH_HEAD
 =======
 >>>>>>> FETCH_HEAD
 

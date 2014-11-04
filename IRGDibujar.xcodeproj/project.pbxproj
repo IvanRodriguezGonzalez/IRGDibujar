@@ -194,10 +194,13 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				3259F3801A07BB2E00652664 /* Protocolos */,
 				3259F3811A07BB5A00652664 /* Cabeceras */,
 				3259F3821A07BB7E00652664 /* Implementacion */,
 =======
+=======
+>>>>>>> FETCH_HEAD
 				E18EBF551A08D740009BF966 /* Protocols */,
 				E18EBF531A08D6C9009BF966 /* Header */,
 				E18EBF541A08D6EB009BF966 /* Implementation */,
@@ -219,6 +222,9 @@
 		E18EBF541A08D6EB009BF966 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
 				32AB333719FD866000441D7A /* AppDelegate.m */,
 				32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */,

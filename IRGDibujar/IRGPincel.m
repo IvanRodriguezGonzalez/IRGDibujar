@@ -9,7 +9,10 @@
 #import "IRGPincel.h"
 #import "IRGLienzo.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 =======
 >>>>>>> FETCH_HEAD
 
