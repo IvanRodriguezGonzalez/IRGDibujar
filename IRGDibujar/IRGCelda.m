@@ -14,6 +14,7 @@
 @property (nonatomic,readonly) float posicionX;
 @property (nonatomic,readonly) float posicionY;
 
+
 @end
 
 @implementation IRGCelda
@@ -37,9 +38,26 @@
     return self;
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.delegado celdaPulsada:self];
+- (void) touchesBegan:(NSSet *)touches
+            withEvent:(UIEvent *)event{
+    [self.delegado inicioDeTouch:self];
 }
+
+- (void)touchesMoved:(NSSet *)touches
+           withEvent:(UIEvent *)event
+{
+    UITouch *t = [touches anyObject];
+    CGPoint location = [t locationInView:self];
+    [self.delegado movimientoDuranteTouch:self posicionX:location.x posicionY:location.y];
+}
+
+- (void)touchesEnded:(NSSet *)touches
+           withEvent:(UIEvent *)event
+{
+    [self.delegado finDeTouch:self];
+}
+
+
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

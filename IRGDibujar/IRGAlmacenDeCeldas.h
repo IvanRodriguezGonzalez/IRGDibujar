@@ -18,11 +18,10 @@
 - (void) borrarAlmacen;
 - (void) añadirCelda: (IRGCeldaViewController *)celda;
 
-- (bool) hayCeldasEnLaFla:(NSUInteger) numeroDeFila
-              conColumnas:(NSUInteger) numeroDeColumnas;
+- (bool) hayCeldasEnLaFla:(NSUInteger) numeroDeFila;
 
-- (NSArray *) celdasDeLaFila:(NSUInteger) numeroDeFila
-                conColumnas:(NSUInteger) numeroDeColumnas;
+- (NSUInteger) celdaDePosicionX:(int)posicionX posicionY:(int) posicionY;
+
 
 - (IRGCeldaViewController *) siguienteCeldaEnLaFila: (IRGCeldaViewController *)celdaOriginal;
 - (IRGCeldaViewController *) anteriorCeldaEnLaFila: (IRGCeldaViewController *)celdaOriginal;

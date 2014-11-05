@@ -17,7 +17,6 @@
 		32AB334919FD866000441D7A /* IRGDibujarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB334819FD866000441D7A /* IRGDibujarTests.m */; };
 		32AB336019FD87A400441D7A /* IRGCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */; };
 		32AB336119FD87A400441D7A /* IRGCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */; };
-		32AB336619FD883600441D7A /* IRGElegirColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */; };
 		32AB337119FD8BD400441D7A /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */; };
 		32AB337419FD933300441D7A /* IRGCelda.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AB337319FD933300441D7A /* IRGCelda.m */; };
 		E129746119FE551F00E7EA99 /* IRGAlmacenDeCeldas.m in Sources */ = {isa = PBXBuildFile; fileRef = E129746019FE551F00E7EA99 /* IRGAlmacenDeCeldas.m */; };
@@ -55,7 +54,6 @@
 		32AB335D19FD87A400441D7A /* IRGCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRGCanvasViewController.h; path = ../IRGCanvasViewController.h; sourceTree = "<group>"; };
 		32AB335E19FD87A400441D7A /* IRGCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRGCanvasViewController.m; path = ../IRGCanvasViewController.m; sourceTree = "<group>"; };
 		32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IRGCanvasViewController.xib; path = ../IRGCanvasViewController.xib; sourceTree = "<group>"; };
-		32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGElegirColorViewController.xib; sourceTree = "<group>"; };
 		32AB336F19FD8BD400441D7A /* IRGCeldaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCeldaViewController.h; sourceTree = "<group>"; };
 		32AB337019FD8BD400441D7A /* IRGCeldaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCeldaViewController.m; sourceTree = "<group>"; };
 		32AB337219FD933300441D7A /* IRGCelda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCelda.h; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				32AB337219FD933300441D7A /* IRGCelda.h */,
 				32AB337319FD933300441D7A /* IRGCelda.m */,
 				32AB335F19FD87A400441D7A /* IRGCanvasViewController.xib */,
-				32AB336419FD883600441D7A /* IRGElegirColorViewController.xib */,
 			);
 			name = Vista;
 			sourceTree = "<group>";
@@ -308,7 +305,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32AB336619FD883600441D7A /* IRGElegirColorViewController.xib in Resources */,
 				32AB336119FD87A400441D7A /* IRGCanvasViewController.xib in Resources */,
 				32AB333D19FD866000441D7A /* LaunchScreen.xib in Resources */,
 				32AB333A19FD866000441D7A /* Images.xcassets in Resources */,

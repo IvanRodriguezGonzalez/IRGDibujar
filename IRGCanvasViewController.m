@@ -97,10 +97,6 @@
 
 
 - (IBAction)reducirCanvas:(UIButton *)sender {
-    UIActivityIndicatorView * ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [ai startAnimating];
-    [self.canvas addSubview:ai];
-    
     [IRGLienzo sharedLienzo].altoCelda = [IRGLienzo sharedLienzo].altoCelda-1;
     [IRGLienzo sharedLienzo].anchoCelda = [IRGLienzo sharedLienzo].anchoCelda-1;
     [self crearAlmacenNuevo];
@@ -157,7 +153,6 @@
     self.navigationItem.title = @"Borrar";
     
 }
-
 
 #pragma mark - Propios
 

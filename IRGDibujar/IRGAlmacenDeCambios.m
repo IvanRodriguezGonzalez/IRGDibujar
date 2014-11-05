@@ -113,7 +113,7 @@
 #pragma mark - Propios - privados
 
 - (NSString *) pathDelArchivoConHistorialDeCambios{
-    NSString * directorio = @"/Users/IRG/Desktop/Dibujos de Iago";
+    NSString * directorio = @"/Users/LVS/Desktop/Dibujos";
     return [directorio stringByAppendingPathComponent:self.nombreDelArchivo];
 }
 

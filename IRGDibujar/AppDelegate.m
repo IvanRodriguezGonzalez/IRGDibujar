@@ -24,7 +24,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    
     IRGCanvasViewController *canvasViewController = [[IRGCanvasViewController alloc]init];
      
     IRGMainNavigationViewController * mvc = [[IRGMainNavigationViewController alloc] initWithRootViewController:canvasViewController];

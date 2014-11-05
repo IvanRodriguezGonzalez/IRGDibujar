@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+@class IRGCelda;
 
 @protocol IRGCeldaProtocol
 
-- (void) celdaPulsada:(id) sender;
+- (void) inicioDeTouch:(IRGCelda *) sender;
+- (void) movimientoDuranteTouch:(IRGCelda *) sender
+                        posicionX:(int)posicionX
+                        posicionY:(int)posicionY;
+- (void) finDeTouch: (IRGCelda *) sender;
 
 @end

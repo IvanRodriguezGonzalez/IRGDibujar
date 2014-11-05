@@ -9,6 +9,7 @@
 #import "IRGAlmacenDeCeldas.h"
 #import "IRGCelda.h"
 #import "IRGCeldaViewController.h"
+#import "IRGLienzo.h"
 
 @interface IRGAlmacenDeCeldas ()
 
@@ -62,9 +63,8 @@
 }
 
 
-- (bool) hayCeldasEnLaFla:(NSUInteger) numeroDeFila
-              conColumnas:(NSUInteger) numeroDeColumnas{
-    if ((numeroDeFila * numeroDeColumnas)< self.allItems.count){
+- (bool) hayCeldasEnLaFla:(NSUInteger) numeroDeFila{
+    if ((numeroDeFila * self.numeroDeColumnas)< self.allItems.count){
         return true;
     }
     else{
@@ -73,17 +73,25 @@
 }
 
 - (NSArray *) celdasDeLaFila:(NSUInteger) numeroDeFila
-                 conColumnas:(NSUInteger) numeroDeColumnas{
+{
     NSMutableArray *arrayTemporal = [[NSMutableArray alloc] init];
     NSUInteger contadorDeCeldas = 0;
-    NSUInteger celdaInicio = numeroDeFila*numeroDeColumnas;
+    NSUInteger celdaInicio = numeroDeFila*self.numeroDeColumnas;
     
-    while ((contadorDeCeldas < numeroDeColumnas) & (contadorDeCeldas+celdaInicio < self.allItems.count)){
+    while ((contadorDeCeldas < self.numeroDeColumnas) & (contadorDeCeldas+celdaInicio < self.allItems.count)){
         [arrayTemporal addObject:self.almacenDeCeldasPrivado[contadorDeCeldas+celdaInicio]];
          contadorDeCeldas++;
     }
          return arrayTemporal;
 }
+
+- (NSUInteger) celdaDePosicionX:(int)posicionX posicionY:(int) posicionY{
+    NSUInteger numeroDeCelda ;
+    numeroDeCelda = (posicionY / [IRGLienzo sharedLienzo].altoCelda)*self.numeroDeColumnas;
+    numeroDeCelda = numeroDeCelda + (posicionX/[IRGLienzo sharedLienzo].anchoCelda);
+    return numeroDeCelda;
+}
+
 
 - (IRGCeldaViewController *) siguienteCeldaEnLaFila: (IRGCeldaViewController *)celdaOriginal{
     if (((celdaOriginal.numeroDeCelda+1) < self.almacenDeCeldasPrivado.count) &

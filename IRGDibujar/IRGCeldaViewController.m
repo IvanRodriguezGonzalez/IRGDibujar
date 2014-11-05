@@ -32,6 +32,7 @@
 @end
 
 @implementation IRGCeldaViewController
+#pragma mark - Inicializadores
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     [NSException exceptionWithName:@"Invalid init" reason:@"Use..." userInfo:nil];
@@ -90,11 +91,14 @@
     _celda = celdaView;
 }
 
-- (void) celdaPulsada:(IRGCelda*)sender{
+#pragma mark - Propios
+
+
+- (void) inicioDeTouch:(IRGCelda*)sender{
 
     self.conjuntoDeCeldasPintadas = [[NSMutableArray alloc] init];
 
-    if ([[IRGPincel sharedPincel].modoPincel isEqual:@"Pintar"]){
+    if ([[IRGPincel sharedPincel].modoPincel isEqual:@"Pintar"]) {
         [self celdaPulsadaConModoPintar];
     }
     else {
@@ -111,10 +115,26 @@
             }
         }
     }
+
+}
+
+- (void) movimientoDuranteTouch:(IRGCelda *)sender
+                        posicionX:(int)posicionX
+                        posicionY:(int)posicionY{
+    if (([[IRGPincel sharedPincel].modoPincel  isEqual: @"Pintar"]) | ([[IRGPincel sharedPincel].modoPincel isEqual:@"Borrar"])){
+        NSUInteger numeroDeCeldaRelativa = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas] celdaDePosicionX:posicionX posicionY:posicionY];
+        NSUInteger numeroDeCelda = numeroDeCeldaRelativa+self.numeroDeCelda;
+        NSArray * todasLasCeldas = [[IRGAlmacenDeCeldas sharedAlmacenDeCeldas]allItems];
+        IRGCeldaViewController * celdaAfectadaViewController = todasLasCeldas[numeroDeCelda];
+        [self pintarYGuardarCeldaDelViewController:celdaAfectadaViewController ];
+    }
+    
+}
+
+- (void) finDeTouch:(IRGCelda *)sender{
     [[IRGAlmacenDeCambios sharedAlmacenDeCambios] nuevaVersionConCeldas:self.conjuntoDeCeldasPintadas];
     [[IRGAlmacenDeCambios sharedAlmacenDeCambios] grabarCambios];
 }
-
 
 - (void) celdaPulsadaConModoBorrar{
     [self borrarYGuardarCeldaDelViewController:self];
@@ -217,7 +237,15 @@
                                         grosorDelTrazoAntiguo:grosorDelTrazoAntiguo
                                         grosorDelTrazoNuevo:celdaViewController.grosorDelTrazoDeLaCelda];
     
-    [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+    bool grabarCeldaAlmacenada = YES;
+    for (IRGCeldaViewController *celdaViewController in self.conjuntoDeCeldasPintadas){
+        if (celdaViewController.numeroDeCelda == celdaPintada.numeroDeCelda){
+            grabarCeldaAlmacenada = NO;
+        }
+    }
+    if (grabarCeldaAlmacenada){
+        [self.conjuntoDeCeldasPintadas addObject:celdaPintada];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
