@@ -8,8 +8,8 @@
 
 #import "IRGLienzo.h"
 
-# define ALTO_DE_LA_CELDA 15
-# define ANCHO_DE_LA_CELDA 15
+# define ALTO_DE_LA_CELDA 20
+# define ANCHO_DE_LA_CELDA 20
 # define FILAS_DEL_LIENZO 20
 # define COLUMNAS_DEL_LIENZO 20
 # define TAMANO_MINIMO_PARA_PINTAR_BORDE 5
@@ -46,7 +46,7 @@
 
 - (void) establecerCeldaSinPintarPorDefecto {
     self.colorDelTrazoDeLaCeldaSinPintar = [UIColor lightGrayColor];
-    self.colorDelRellenoDeLaCeldaSinPintar = [UIColor lightGrayColor];
+    self.colorDelRellenoDeLaCeldaSinPintar = [UIColor clearColor];
     self.grosoDelTrazoDeLaCeldaSinPintar = 1;
 }
 

@@ -17,10 +17,6 @@
 @property (nonatomic) NSUInteger numeroDeCelda;
 
 
-@property (nonatomic)BOOL rellenada;
-
-
-
 //designated initialier
 
 -(instancetype) initWithPosicionX:(NSUInteger)posicionX

@@ -18,6 +18,11 @@
 
 
 @interface IRGCanvasViewController ()
+@property (weak, nonatomic) IBOutlet UIView *barraColores;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaPintar;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaRellenar;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaRellenarExtendido;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBorrar;
 
 @property (weak, nonatomic) IBOutlet UIView *barraDeIconos;
 @property (weak, nonatomic) IBOutlet UIView *colorElegido;
@@ -43,23 +48,6 @@
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-        UIBarButtonItem * botonIzquierdo = [[UIBarButtonItem alloc]
-                                             initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
-                                             target:self
-                                             action:@selector(retrocederVersion:)];
-        
-        UIBarButtonItem * botonDerecho=[[UIBarButtonItem alloc]
-                                            initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
-                                            target:self
-                                            action:@selector(avanzarVersion:)];
-        
-        NSArray *botonesIzquierdos = @[botonIzquierdo];
-        NSArray *botonesDerechos = @[botonDerecho];
-        self.navigationItem.rightBarButtonItems = botonesDerechos;
-        self.navigationItem.leftBarButtonItems = botonesIzquierdos;
-    }
     return self;
 }
 
@@ -68,7 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+    [self.navigationController setNavigationBarHidden:YES];
     [self crearAlmacenNuevo];
     [self dibujarCeldasDelLienzo];
     [self refrescarCanvasConCeldasCambiasdasEnTodasLasVersiones];
@@ -93,6 +81,7 @@
 - (IBAction)establecerColor:(UIButton *)sender {
     [IRGPincel sharedPincel].colorDeRellenoDelPincel = sender.backgroundColor ;
     self.colorElegido.backgroundColor = sender.backgroundColor;
+    
 }
 
 
@@ -116,18 +105,24 @@
     [IRGPincel sharedPincel].modoPincel = @"RellenarNormal";
     self.navigationItem.title = @"Rellenar";
     [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
+    [self borrarColorEtiquetasBotonos];
+    self.etiquetaRellenar.textColor = [UIColor blueColor];
 }
 
 - (IBAction)accionRellenarExtendido:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"RellenarExtendido";
     self.navigationItem.title = @"Rellenar extendido";
     [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
+    [self borrarColorEtiquetasBotonos];
+    self.etiquetaRellenarExtendido.textColor = [UIColor blueColor];
 }
 
 - (IBAction)accionPintar:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"Pintar";
     self.navigationItem.title = @"Pintar";
     [IRGPincel sharedPincel].colorDeRellenoDelPincel = self.colorElegido.backgroundColor ;
+    [self borrarColorEtiquetasBotonos];
+    self.etiquetaPintar.textColor = [UIColor blueColor];
 }
 
 - (IBAction)retrocederVersion:(id)sender {
@@ -151,6 +146,8 @@
 - (IBAction)accionBorrar:(UIButton *)sender {
     [IRGPincel sharedPincel].modoPincel = @"Borrar";
     self.navigationItem.title = @"Borrar";
+    [self borrarColorEtiquetasBotonos];
+    self.etiquetaBorrar.textColor = [UIColor blueColor];
     
 }
 
@@ -194,7 +191,6 @@
     for (IRGCeldaViewController * celdaViewController in [IRGAlmacenDeCeldas sharedAlmacenDeCeldas].allItems){
         [self.canvas addSubview:celdaViewController.view];
     }
-    self.navigationItem.title = [NSString stringWithFormat:@"%lu",(unsigned long)[[IRGAlmacenDeCeldas sharedAlmacenDeCeldas].allItems count]];
 }
 
 - (void) borrarCeldasDelLienzo{
@@ -229,6 +225,14 @@
             [celdaViewController dibujarCeldaConCeldaAlmacenadaConVersionNueva:celdaAlmacenada];
         }
     }
+}
+
+-(void) borrarColorEtiquetasBotonos{
+    UIColor * colorEtiquetas = [UIColor blackColor];
+    self.etiquetaPintar.textColor = colorEtiquetas;
+    self.etiquetaRellenar.textColor =colorEtiquetas;
+    self.etiquetaRellenarExtendido.textColor = colorEtiquetas;
+    self.etiquetaBorrar.textColor = colorEtiquetas;
 }
 
 
