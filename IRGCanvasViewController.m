@@ -97,6 +97,10 @@
 
 
 - (IBAction)reducirCanvas:(UIButton *)sender {
+    UIActivityIndicatorView * ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [ai startAnimating];
+    [self.canvas addSubview:ai];
+    
     [IRGLienzo sharedLienzo].altoCelda = [IRGLienzo sharedLienzo].altoCelda-1;
     [IRGLienzo sharedLienzo].anchoCelda = [IRGLienzo sharedLienzo].anchoCelda-1;
     [self crearAlmacenNuevo];
@@ -222,7 +226,6 @@
     IRGCeldaViewController * celdaViewController;
     
     for (IRGCeldaAlmacenada * celdaAlmacenada in celdasCambiadasEnEstaVersion){
-
         celdaViewController = [todasLasCeldas objectAtIndex:celdaAlmacenada.numeroDeCelda];
         if (usarVersionAntigua){
             [celdaViewController dibujarCeldaConCeldaAlmacenadaConVersionAntigua:celdaAlmacenada];
