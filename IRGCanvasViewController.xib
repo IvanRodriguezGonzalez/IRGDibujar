@@ -33,7 +33,7 @@
                                 <constraint firstAttribute="width" secondItem="Zbh-Hr-RJW" secondAttribute="height" multiplier="1:1" id="kLp-yY-BqF"/>
                                 <constraint firstAttribute="height" constant="30" id="nD4-kB-UTK"/>
                             </constraints>
-                            <state key="normal" title="pintar" image="pen-icon">
+                            <state key="normal" title="pintar" image="Pintar">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -629,13 +629,13 @@
         </view>
     </objects>
     <resources>
+        <image name="Pintar" width="256" height="256"/>
         <image name="arrow-down-icon" width="256" height="256"/>
         <image name="arrow-forward-icon" width="256" height="256"/>
         <image name="arrow-next-1-icon" width="256" height="256"/>
         <image name="arrow-rewind-icon" width="256" height="256"/>
         <image name="arrow-up-icon" width="256" height="256"/>
         <image name="file-folder-icon" width="256" height="256"/>
-        <image name="pen-icon" width="256" height="256"/>
         <image name="put-inside-icon" width="256" height="256"/>
         <image name="signal-icon" width="256" height="256"/>
     </resources>
