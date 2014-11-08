@@ -153,8 +153,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rellenar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbT-lI-Tww">
-                            <rect key="frame" x="106" y="51" width="35" height="11"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rellenar*" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbT-lI-Tww">
+                            <rect key="frame" x="106" y="51" width="39" height="11"/>
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                             <nil key="highlightedColor"/>
                         </label>
